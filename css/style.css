@@ -89,16 +89,15 @@ a{
 .single-project{
   --marginLeft: 10rem;
   --marginBottom: 3.5rem;
-  --fontSize: 1.5rem;
+  --fontSize: 1.125rem;
   --lineHeight: 1.5;
-  --paddingBlock: 0.75rem;
-  --paddingInline: 1.5rem;
-  --borderWidth: 0.125rem;
+  --paddingBlock: 0.5rem;
+  --paddingInline: 0.75rem;
+  --borderWidth: 0.0625rem;
 
   position: absolute;
   translate: 0 -100%;
   border: var(--borderWidth) solid var(--text-color);
-  border-radius: 0.5rem;
   padding: var(--paddingBlock) var(--paddingInline);
   font-size: var(--fontSize);
   line-height: var(--lineHeight);
@@ -116,7 +115,7 @@ a{
   width: var(--marginLeft);
   height: calc(var(--marginBottom) + calc(calc(var(--fontSize) * var(--lineHeight) + calc(calc(var(--borderWidth) + var(--paddingBlock)) * 2)) / 2));
   background: repeating-linear-gradient(90deg, #fff, #fff 0.75rem, #ffffff00 0.75rem, #ffffff00 1rem);
-  clip-path: polygon(0% calc(100% - 0.25rem), 30% 0%, 100% 0%, 100% 0.5rem, 30% 0.5rem, 0.25rem 100%, 0% 100%);
+  clip-path: polygon(0% calc(100% - 0.125rem), 30% 0%, 100% 0%, 100% 0.125rem, calc(30% + 0.125rem) 0.125rem, 0.125rem 100%, 0% 100%);
 }
 .single-project::after{
   content: '';

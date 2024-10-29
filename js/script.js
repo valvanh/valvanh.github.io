@@ -57,6 +57,10 @@ window.addEventListener('load', function() {
   console.log("Fiered load after " + performance.now() + " ms");
 }, false);
 
+document.addEventListener('mousemove', function(event) {
+  console.log(`Mouse : ${event.clientX}x${event.clientY}`);
+});
+
 document.querySelectorAll('a').forEach(element => {
   element.addEventListener('click', (event) => {
     const blacklistUrl = ['mailto:valentinvanh@gmail.com', 'https://www.instagram.com/vanskull_/', 'https://twitter.com/VanSkull_Live'];
