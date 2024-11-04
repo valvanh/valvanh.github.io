@@ -54,12 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.addEventListener('load', function() {
   siteLoaded = true;
+  fetchProjects();
   console.log("Fiered load after " + performance.now() + " ms");
 }, false);
 
-document.addEventListener('mousemove', function(event) {
-  console.log(`Mouse : ${event.clientX}x${event.clientY}`);
-});
+// document.addEventListener('mousemove', function(event) {
+//   console.log(`Mouse : ${event.clientX}x${event.clientY}`);
+// });
 
 document.querySelectorAll('a').forEach(element => {
   element.addEventListener('click', (event) => {
@@ -109,4 +110,29 @@ function formatAMPM(date) {
   minutes = minutes < 10 ? '0'+minutes : minutes;
   var strTime = hours + ':' + minutes + ' ' + ampm;
   return strTime;
+}
+
+async function fetchProjects() {
+  try {
+    const response = await fetch("/projects.json");
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const projects = await response.json();
+    console.log(projects);
+    projects.projects.forEach(project => {
+      const div = document.createElement('div');
+      div.classList.add("single-project");
+      div.innerHTML = `<img src="${project.backgroundImage}" alt="${project.name}" class="single-project__background">
+            <div class="single-project__logo">${project.logo}</div>
+            <div class="single-project__title">${project.name}</div>
+            <div class="single-project__subtitle">${project.subtitle}</div>
+            <div class="single-project__date">${project.date}</div>
+            <div class="single-project__description">${project.description}</div>
+            <a href="${project.link}" class="single-project__link">See project</a>`;
+      document.getElementById('core-planet').appendChild(div);
+    });
+  } catch (error) {
+    console.error(error.message);
+  }
 }
