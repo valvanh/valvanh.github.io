@@ -4,7 +4,48 @@
       "name": "Wonderin'",
       "subtitle": "Readers/writers' world",
       "logo": "",
-      "date": 2022,
+      "backgroundImage": "",
+      "date": "2022",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?"
+    },
+    {
+      "name": "All In One",
+      "subtitle": "All your social medias in one place",
+      "logo": "",
+      "backgroundImage": "",
+      "date": "2024",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?"
+    },
+    {
+      "name": "Agrio Agriculture",
+      "subtitle": "The Future of planet",
+      "logo": "",
+      "backgroundImage": "",
+      "date": "2024",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?"
+    },
+    {
+      "name": "Wolface",
+      "subtitle": "A Facebook's clone",
+      "logo": "",
+      "backgroundImage": "",
+      "date": "2022",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?"
+    },
+    {
+      "name": "3D",
+      "subtitle": "My first website using ThreeJS",
+      "logo": "",
+      "backgroundImage": "",
+      "date": "2024",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?"
+    },
+    {
+      "name": "Geogames",
+      "subtitle": "Find in which video game you landed and where",
+      "logo": "",
+      "backgroundImage": "",
+      "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?"
     }
   ]
