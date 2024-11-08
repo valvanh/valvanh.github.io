@@ -124,7 +124,7 @@ async function fetchProjects() {
       const div = document.createElement('div');
       div.classList.add("single-project");
       div.innerHTML = `<img src="${project.backgroundImage}" alt="${project.name}" class="single-project__background">
-            <div class="single-project__logo">${project.logo}</div>
+            <div class="single-project__logo"><img src="${project.logo}" alt="${project.name} Logo" /></div>
             <div class="single-project__title">${project.name}</div>
             <div class="single-project__subtitle">${project.subtitle}</div>
             <div class="single-project__date">${project.date}</div>

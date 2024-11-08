@@ -3,56 +3,56 @@
     {
       "name": "Wonderin'",
       "subtitle": "Readers/writers' world",
-      "logo": "",
-      "backgroundImage": "",
+      "logo": "/assets/images/projects/logo/wonderin-logo.webp",
+      "backgroundImage": "/assets/images/projects/background/wonderin-background.webp",
       "date": "2022",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": ""
+      "link": "https://wonderin.com/"
     },
     {
       "name": "All In One",
       "subtitle": "All your social medias in one place",
-      "logo": "",
-      "backgroundImage": "",
+      "logo": "/assets/images/projects/logo/all-in-one-logo.webp",
+      "backgroundImage": "/assets/images/projects/background/all-in-one-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": ""
+      "link": "https://all-in-one.com/"
     },
     {
       "name": "Agrio Agriculture",
       "subtitle": "The Future of planet",
-      "logo": "",
-      "backgroundImage": "",
+      "logo": "/assets/images/projects/logo/agrio-logo.webp",
+      "backgroundImage": "/assets/images/projects/background/agrio-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": ""
+      "link": "https://agrio-agriculture.net/"
     },
     {
       "name": "Wolface",
       "subtitle": "A Facebook's clone",
-      "logo": "",
-      "backgroundImage": "",
+      "logo": "/assets/images/projects/logo/wolface-logo.webp",
+      "backgroundImage": "/assets/images/projects/background/wolface-background.webp",
       "date": "2022",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": ""
+      "link": "https://wolface.com/"
     },
     {
       "name": "3D",
       "subtitle": "My first website using ThreeJS",
-      "logo": "",
-      "backgroundImage": "",
+      "logo": "/assets/images/projects/logo/3d-world-logo.webp",
+      "backgroundImage": "/assets/images/projects/background/3d-world-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": ""
+      "link": "https://3d-world.fr/"
     },
     {
       "name": "Geogames",
       "subtitle": "Find in which video game you landed and where",
-      "logo": "",
-      "backgroundImage": "",
+      "logo": "/assets/images/projects/logo/geogames-logo.webp",
+      "backgroundImage": "/assets/images/projects/background/geogames-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": ""
+      "link": "https://geogames.io/"
     }
   ]
 }
