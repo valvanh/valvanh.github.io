@@ -57,7 +57,7 @@ a{
   position: relative;
   aspect-ratio: 1;
   border-radius: 50%;
-  background-color: rgb(119, 22, 22);
+  /* background-color: rgb(119, 22, 22); */
   max-width: 100px;
   width: auto;
   max-width: 90svw;
@@ -65,6 +65,9 @@ a{
   height: 100%;
   max-height: 90svh;
   box-shadow: inset -3rem -3rem 0 #0000007c;
+  perspective: 200px;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
 }
 @media screen and (max-aspect-ratio: 1) {
   #core-planet{
@@ -73,63 +76,91 @@ a{
   }
 }
 
+#core-planet:not(:has(.single-project.active)):has(.single-project:hover) .single-project:not(:hover){
+  scale: 0.8;
+  filter: brightness(0.5);
+}
+#core-planet:not(:has(.single-project.active)) .single-project:hover{
+  scale: 1.2;
+  filter: brightness(1);
+}
+#core-planet:has(.single-project.active) .single-project:not(.active){
+  transform: translateX(-50%) translateY(-50%) translateZ(calc(var(--distance, -5px) - 100px)) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
   /* Single Project */
-/*
 .single-project{
-  --marginLeft: 10rem;
-  --marginBottom: 3.5rem;
-  --fontSize: 1.125rem;
-  --lineHeight: 1.5;
-  --paddingBlock: 0.5rem;
-  --paddingInline: 0.75rem;
-  --borderWidth: 0.0625rem;
+  position: absolute;
+  top: var(--translateY, 0);
+  left: var(--translateX, 0);
+  transform-origin: 50% 50%;
+  transform: translateX(-50%) translateY(-50%) translateZ(var(--distance, 50px)) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)) rotateZ(var(--rotateZ, 0deg));
 
-  position: absolute;
-  translate: 0 -100%;
-  border: var(--borderWidth) solid var(--text-color);
-  padding: var(--paddingBlock) var(--paddingInline);
-  font-size: var(--fontSize);
-  line-height: var(--lineHeight);
-  min-width: 16rem;
-  max-width: 40rem;
-  margin-left: var(--marginLeft);
-  margin-bottom: var(--marginBottom);
-  background-color: #0000007c;
-}
-.single-project::before{
-  content: '';
-  position: absolute;
-  left: calc(var(--marginLeft) * -1);
-  bottom: calc(var(--marginBottom) * -1);
-  width: var(--marginLeft);
-  height: calc(var(--marginBottom) + calc(calc(var(--fontSize) * var(--lineHeight) + calc(calc(var(--borderWidth) + var(--paddingBlock)) * 2)) / 2));
-  background: repeating-linear-gradient(90deg, #fff, #fff 0.75rem, #ffffff00 0.75rem, #ffffff00 1rem);
-  clip-path: polygon(0% calc(100% - 0.125rem), 30% 0%, 100% 0%, 100% 0.125rem, calc(30% + 0.125rem) 0.125rem, 0.125rem 100%, 0% 100%);
-}
-.single-project::after{
-  content: '';
-  position: absolute;
-  left: calc(var(--marginLeft) * -1);
-  bottom: calc(var(--marginBottom) * -1);
-  translate: -50% 50%;
-  width: 0.75rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: var(--text-color);
-}
-*/
-.single-project{
-  position: relative;
   display: inline-block;
   aspect-ratio: 16/9;
-  width: 350px;
+  width: clamp(200px, 35vw, 500px);
   max-height: 90svh;
   text-align: center;
   align-content: center;
   padding: 1.25rem;
   overflow: hidden;
   border-radius: 0.5rem;
+  user-select: none;
+  filter: brightness(var(--brightness, 1));
   transition: 1s ease;
+}
+.single-project:nth-of-type(1){
+  --distance: -150px;
+  --translateX : 90%;
+  --translateY : 48%;
+  --rotateX : 8deg;
+  --rotateY : -15deg;
+  --rotateZ : 5deg;
+  --brightness : 0.7;
+}
+.single-project:nth-of-type(2){
+  --distance: -120px;
+  --translateX : 34%;
+  --translateY : 58%;
+  --rotateX : -2deg;
+  --rotateY : 8deg;
+  --rotateZ : 0deg;
+  --brightness : 0.75;
+}
+.single-project:nth-of-type(3){
+  --distance: -90px;
+  --translateX : 11%;
+  --translateY : 29%;
+  --rotateX : 7deg;
+  --rotateY : 5deg;
+  --rotateZ : 6deg;
+  --brightness : 0.8;
+}
+.single-project:nth-of-type(4){
+  --distance: -60px;
+  --translateX : 81%;
+  --translateY : 85%;
+  --rotateX : 4deg;
+  --rotateY : -7deg;
+  --rotateZ : 11deg;
+  --brightness : 0.85;
+}
+.single-project:nth-of-type(5){
+  --distance: -30px;
+  --translateX : 66%;
+  --translateY : 17%;
+  --rotateX : -2deg;
+  --rotateY : -6deg;
+  --rotateZ : -1deg;
+  --brightness : 0.90;
+}
+.single-project:nth-of-type(6){
+  --distance: 0px;
+  --translateX : 19%;
+  --translateY : 80%;
+  --rotateX : 2deg;
+  --rotateY : 2deg;
+  --rotateZ : 2deg;
+  --brightness : 0.95;
 }
 .single-project > *:not(.single-project__background, .single-project__title){
   display: none;
@@ -144,6 +175,8 @@ a{
   object-fit: cover;
   object-position: center;
   filter: brightness(1);
+  user-select: none;
+  pointer-events: none;
   transition: 0.5s ease;
 }
 .single-project .single-project__title{
@@ -153,14 +186,46 @@ a{
   z-index: 2;
   transition: 0.5s ease;
 }
-.single-project:has(:hover, :focus-visible){
+.single-project .single-project__logo img{
+  display: block;
+  width: 80px;
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+}
+.single-project:not(.active):is(:hover, :focus-visible),
+.single-project:not(.active):has(:hover, :focus-visible){
   cursor: pointer;
 }
-.single-project:has(:hover, :focus-visible) img.single-project__background{
+.single-project:not(.active):is(:hover, :focus-visible) img.single-project__background,
+.single-project:not(.active):has(:hover, :focus-visible) img.single-project__background{
   filter: brightness(0.3);
 }
-.single-project:has(:hover, :focus-visible) .single-project__title{
+.single-project:not(.active):is(:hover, :focus-visible) .single-project__title,
+.single-project:not(.active):has(:hover, :focus-visible) .single-project__title{
   opacity: 1;
+}
+
+.single-project.active{
+  top: 50%;
+  left: 50%;
+  scale: 1;
+  transform: translateX(-50%) translateY(-50%) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  filter: brightness(1);
+  width: 90vw;
+  height: 90vh;
+  z-index: 100000;
+
+  text-align: left;
+  padding-left: calc(30% + 4.5rem);
+  background-color: rgba(0 0 0 / 0.75);
+}
+.single-project.active img.single-project__background{
+  inset: 0 70% 0 0;
+  width: 30%;
+}
+.single-project.active > *{
+  display: initial;
 }
 
 /* Section About */
@@ -227,6 +292,7 @@ a{
 #ui #ui__bottom-left{
   bottom: 0;
   left: 0;
+  pointer-events: none;
 }
 #ui #ui__bottom-right{
   bottom: 0;

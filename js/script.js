@@ -89,6 +89,29 @@ document.querySelectorAll('a').forEach(element => {
   });
 });
 
+
+
+function bindClickProject(){
+  let allProjects = document.querySelectorAll('.single-project');
+
+  allProjects.forEach(project => {
+    console.log('project');
+    project.querySelector('.single-project__close-project').addEventListener('click', () => {
+      setTimeout(() => {
+        console.log("close project");
+        project.classList.remove('active');
+      }, 10);
+    });
+    project.addEventListener('click', () => {
+      console.log('click project');
+      allProjects.forEach(el => { el.classList.remove('active'); });
+      if (!project.classList.contains('active')) {
+        project.classList.add('active');
+      }
+    });
+  });
+}
+
 function displayTime() {
   let timeDisplay = document.getElementById('time');
   let timezoneDisplay = document.getElementById('timezone');
@@ -118,9 +141,9 @@ async function fetchProjects() {
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-    const projects = await response.json();
-    console.log(projects);
-    projects.projects.forEach(project => {
+    const data = await response.json();
+    // console.log(projects);
+    data.projects.forEach(project => {
       const div = document.createElement('div');
       div.classList.add("single-project");
       div.innerHTML = `<img src="${project.backgroundImage}" alt="${project.name}" class="single-project__background">
@@ -129,9 +152,12 @@ async function fetchProjects() {
             <div class="single-project__subtitle">${project.subtitle}</div>
             <div class="single-project__date">${project.date}</div>
             <div class="single-project__description">${project.description}</div>
-            <a href="${project.link}" class="single-project__link">See project</a>`;
+            <a href="${project.link}" class="single-project__link">See project</a>
+            <button class="single-project__close-project">Go back<button>`;
       document.getElementById('core-planet').appendChild(div);
     });
+
+    bindClickProject();
   } catch (error) {
     console.error(error.message);
   }
