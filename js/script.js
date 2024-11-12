@@ -79,13 +79,19 @@ document.querySelectorAll('a').forEach(element => {
         case '/projects':
           currentPage = 'projects'
           break;
-      
         default:
           break;
       }
     }
-    console.log(currentPage);
-    
+    if (currentPage == 'about') {
+      window.history.replaceState({ additionalInformation: 'Updated the URL with JS' }, 'Valentin Vanhaecke - Front-end Developer', `/about`);
+      document.querySelector('#main-content__projects').style.display = "none";  
+      document.querySelector('#main-content__about').style.display = "block";  
+    }else{
+      window.history.replaceState({ additionalInformation: 'Updated the URL with JS' }, 'Valentin Vanhaecke - Front-end Developer', `/`);
+      document.querySelector('#main-content__projects').style.display = "flex";  
+      document.querySelector('#main-content__about').style.display = "none";  
+    }
   });
 });
 
