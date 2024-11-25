@@ -2,7 +2,7 @@
   --brand-color: #f00;
   --accent-color: #0f0;
   --bg-color: #efecf6;
-  --text-color: #fff;
+  --text-color: #1d1d1d;
 
   --font-text: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   --font-title: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,4 +24,55 @@ html, body{
   color: var(--text-color);
   height: 100svh;
   overflow: hidden;
+}
+
+header{
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  inset: 0 0 auto;
+}
+
+#menu{
+  position: relative;
+  width: 1.5rem;
+  aspect-ratio: 1.5;
+  .menu__bar{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    &:nth-child(1){
+      top: 0;
+      left: 50%;
+      translate: -50% 0;
+    }
+    &:nth-child(2){
+      top: 50;
+      left: 50%;
+      translate: -50% -50%;
+    }
+    &:nth-child(3){
+      bottom: 0;
+      left: 50%;
+      translate: -50% 0;
+    }
+  }
+}
+
+#project-infos{
+  position: absolute;
+  top: 50%;
+  left: 5vw;
+  translate: 0 -50%;
+  width: clamp(10px, 25%, 300px);  
+}
+
+#navigation-slider{
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
 }
