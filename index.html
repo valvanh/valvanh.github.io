@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentin Vanhaecke - Front-end Developer</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet preload" href="/css/style.css">
   <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -12,11 +12,17 @@
     <header>
       <a href="/" id="brand">Valentin Vanhaecke</a>
       
-      <button id="menu">
-        <div class="menu__bar"></div>
-        <div class="menu__bar"></div>
-        <div class="menu__bar"></div>
-      </button>
+      <div id="menu">
+        <button id="menu__button">
+          <div class="menu__bar"></div>
+          <div class="menu__bar"></div>
+          <div class="menu__bar"></div>
+        </button>
+        <ul id="menu__list">
+          <li><a href="/">Projects</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
     </header>
 
     <aside id="project-infos">
@@ -29,7 +35,7 @@
       <button>Prev</button>
       <button>Next</button>
       
-      <button>Light/Night Mode</button>
+      <button id="switch-light-night">Light/Night Mode</button>
     </div>
   </main>
   <script src="/js/script.js"></script>

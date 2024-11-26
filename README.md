@@ -1,6 +1,6 @@
 # Bienvenue dans mon monde 🕹
 
-Je suis Valentin Vanhaecke, un développeur web full-stack toujours en quête de nouveaux défis et de challenges. Ayant fait mes débuts il y a 8 ans, je me suis spécialisé dans le développement web, plus particulièrement dans le front-end.
+Je suis Valentin Vanhaecke, un développeur web full-stack toujours en quête de nouveaux défis et de challenges. Ayant fait mes débuts il y a 8 ans, je me suis spécialisé dans le développement web, plus particulièrement dans le front-end. Toujours prêt à relever des défis quelque soit le support, je répond présent.
 
 ## Ceci est mon travail 📃
 
