@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentin Vanhaecke - Front-end Developer</title>
-  <link rel="stylesheet preload" href="/css/style.css">
+  <link rel="stylesheet preload" href="/css/style.css" as="style">
   <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -32,12 +32,22 @@
     </aside>
 
     <div id="navigation-slider">
-      <button>Prev</button>
-      <button>Next</button>
+      <button id="navigation-slider__prev">Prev</button>
+      <button id="navigation-slider__next">Next</button>
       
       <button id="switch-light-night">Light/Night Mode</button>
     </div>
   </main>
-  <script src="/js/script.js"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+  <script type="module" src="/js/script.js"></script>
 </body>
 </html>
