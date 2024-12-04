@@ -2,10 +2,11 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-let scene, camera, renderer, clock;
+let scene, camera, renderer, clock, controls;
 let objects = [];
 let hoverObject = null;
 let index = 0;
+let ambientLight;
 
 document.addEventListener('readystatechange', function () {
   console.log("Fiered '" + document.readyState + "' after " + performance.now() + " ms");
@@ -27,15 +28,13 @@ document.addEventListener('DOMContentLoaded', function () {
   initScene();
   initLights();
   initObjects();
-  initEventListeners();
   animate();
 }, false);
 
 window.addEventListener('load', function () {
   console.log("Fiered load after " + performance.now() + " ms");
-
-  document.getElementById('switch-light-night').addEventListener('click', switchLightNight);
-  document.getElementById('menu__button').addEventListener('click', menuBurger);
+  
+  initEventListeners();
 }, false);
 
 // ------------
@@ -51,12 +50,32 @@ function loadProjectInfos(project) {
 }
 
 function switchLightNight() {
-  if (getCookie('theme') != "" && getCookie('theme') == "light") {
-    setCookie('theme', 'night', 7);
+  const theme = getCookie('theme') === 'night' ? 'light' : 'night';
+  setCookie('theme', theme, 7);
+
+  // Détermine les nouvelles couleurs et intensités
+  const newBackground = theme === 'night' ? '#17212b' : '#efecf6';
+  const newIntensity = theme === 'night' ? 0.3 : 0.8;
+
+  // Transition douce avec GSAP
+  gsap.to(ambientLight, { intensity: newIntensity, duration: 0.5, ease: 'power2.out' });
+  gsap.to(scene.background, {
+    r: new THREE.Color(newBackground).r,
+    g: new THREE.Color(newBackground).g,
+    b: new THREE.Color(newBackground).b,
+    duration: 0.5,
+    ease: 'power2.out',
+    onUpdate: () => {
+      // Met à jour la couleur de l'arrière-plan en temps réel
+      renderer.render(scene, camera);
+    }
+  });
+
+  // Transition visuelle pour le corps (CSS)
+  if (theme === 'night') {
     document.body.classList.remove('light-mode');
     document.body.classList.add('night-mode');
   } else {
-    setCookie('theme', 'light', 7);
     document.body.classList.add('light-mode');
     document.body.classList.remove('night-mode');
   }
@@ -94,12 +113,23 @@ function getCookie(cname) {
 // Initialisation de la scène
 function initScene() {
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 10;
 
+  // Configuration de la caméra
+  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 1, 10);
+
+  // Rendu
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
+
+  // OrbitControls
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; // Douceur des mouvements
+  controls.dampingFactor = 0.05;
+
+  // Couleur initiale de l'arrière-plan
+  scene.background = new THREE.Color(getCookie('theme') === 'night' ? '#17212b' : '#efecf6');
 
   clock = new THREE.Clock();
   window.addEventListener('resize', onWindowResize);
@@ -107,7 +137,7 @@ function initScene() {
 
 // Gestion de la lumière
 function initLights() {
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+  ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
   scene.add(ambientLight);
 
   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
@@ -141,6 +171,9 @@ function onWindowResize() {
 function animate() {
   requestAnimationFrame(animate);
 
+  // Mise à jour d'OrbitControls
+  controls.update();
+
   const elapsed = clock.getElapsedTime();
   if (hoverObject) {
     hoverObject.position.y = Math.sin(elapsed) * 0.2; // Effet de lévitation
@@ -153,6 +186,8 @@ function animate() {
 function initEventListeners() {
   document.getElementById('navigation-slider__next').addEventListener('click', () => updateSlider(1));
   document.getElementById('navigation-slider__prev').addEventListener('click', () => updateSlider(-1));
+  document.getElementById('switch-light-night').addEventListener('click', switchLightNight);
+  document.getElementById('menu__button').addEventListener('click', menuBurger);
 
   window.addEventListener('mousemove', onMouseMove);
 }

@@ -51,6 +51,7 @@ header{
   padding: 1rem;
   background-color: var(--text-color);
   border-radius: 0.625rem;
+  transition: 0.5s ease-in-out;
   &.open{
     #menu__button{
       .menu__bar{
@@ -157,6 +158,7 @@ header{
   padding: 1rem;
   border-radius: 0.625rem;
   background-color: var(--text-color);
+  transition: 0.5s ease-in-out;
   #navigation-slider__prev,
   #navigation-slider__next{
     cursor: pointer;
@@ -171,7 +173,8 @@ header{
     color: transparent;
     overflow: hidden;
     transition: 0.5s ease-in-out;
-    &::before{
+    &::before,
+    &::after{
       content: '';
       position: absolute;
       top: 50%;
@@ -185,11 +188,21 @@ header{
       transition: 0.5s ease-in-out;
     }
   }
-  #navigation-slider__prev::before{
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M20 11.25C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75H10.75L10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002L10.75 11.25H20Z" fill="%231C274C"/></svg>');
+  #navigation-slider__prev{
+    &::before{
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M20 11.25C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75H10.75L10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002L10.75 11.25H20Z" fill="%231C274C"/></svg>');
+    }
+    &::after{
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M20 11.25C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75H10.75L10.75 18C10.75 18.3034 10.5673 18.5768 10.287 18.6929C10.0068 18.809 9.68417 18.7449 9.46967 18.5304L3.46967 12.5304C3.32902 12.3897 3.25 12.1989 3.25 12C3.25 11.8011 3.32902 11.6103 3.46967 11.4697L9.46967 5.46969C9.68417 5.25519 10.0068 5.19103 10.287 5.30711C10.5673 5.4232 10.75 5.69668 10.75 6.00002L10.75 11.25H20Z" fill="%23FFFFFF"/></svg>');
+    }
   }
-  #navigation-slider__next::before{
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H13.25V18C13.25 18.3034 13.4327 18.5768 13.713 18.6929C13.9932 18.809 14.3158 18.7449 14.5303 18.5304L20.5303 12.5304C20.671 12.3897 20.75 12.1989 20.75 12C20.75 11.8011 20.671 11.6103 20.5303 11.4697L14.5303 5.46969C14.3158 5.25519 13.9932 5.19103 13.713 5.30711C13.4327 5.4232 13.25 5.69668 13.25 6.00002V11.25H4Z" fill="%231C274C"/></svg>');
+  #navigation-slider__next{
+    &::before{
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H13.25V18C13.25 18.3034 13.4327 18.5768 13.713 18.6929C13.9932 18.809 14.3158 18.7449 14.5303 18.5304L20.5303 12.5304C20.671 12.3897 20.75 12.1989 20.75 12C20.75 11.8011 20.671 11.6103 20.5303 11.4697L14.5303 5.46969C14.3158 5.25519 13.9932 5.19103 13.713 5.30711C13.4327 5.4232 13.25 5.69668 13.25 6.00002V11.25H4Z" fill="%231C274C"/></svg>');
+    }
+    &::after{
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H13.25V18C13.25 18.3034 13.4327 18.5768 13.713 18.6929C13.9932 18.809 14.3158 18.7449 14.5303 18.5304L20.5303 12.5304C20.671 12.3897 20.75 12.1989 20.75 12C20.75 11.8011 20.671 11.6103 20.5303 11.4697L14.5303 5.46969C14.3158 5.25519 13.9932 5.19103 13.713 5.30711C13.4327 5.4232 13.25 5.69668 13.25 6.00002V11.25H4Z" fill="%23FFFFFF"/></svg>');
+    }
   }
 
   #switch-light-night{
@@ -225,24 +238,46 @@ header{
       opacity: 1;
     }
     &::after{
-      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="%231C274C"/></svg>');
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="%23FFFFFF"/></svg>');
       opacity: 0;
     }
   }
 }
-body.light-mode #navigation-slider #switch-light-night{
-  &::before{
-    opacity: 1;
+body.light-mode #navigation-slider{
+  #navigation-slider__prev,
+  #navigation-slider__next{
+    &::before{
+      opacity: 1;
+    }
+    &::after{
+      opacity: 0;
+    }
   }
-  &::after{
-    opacity: 0;
+  #switch-light-night{
+    &::before{
+      opacity: 1;
+    }
+    &::after{
+      opacity: 0;
+    }
   }
 }
-body.night-mode #navigation-slider #switch-light-night{
-  &::before{
-    opacity: 0;
+body.night-mode #navigation-slider{
+  #navigation-slider__prev,
+  #navigation-slider__next{
+    &::before{
+      opacity: 0;
+    }
+    &::after{
+      opacity: 1;
+    }
   }
-  &::after{
-    opacity: 1;
+  #switch-light-night{
+    &::before{
+      opacity: 0;
+    }
+    &::after{
+      opacity: 1;
+    }
   }
 }
