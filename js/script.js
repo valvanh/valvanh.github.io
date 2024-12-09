@@ -158,6 +158,7 @@ function initObjects() {
   }
 
   hoverObject = objects[0]; // L'objet en focus au début
+  animateBounce(hoverObject);
 }
 
 // Mise à jour lors du redimensionnement de la fenêtre
@@ -176,7 +177,7 @@ function animate() {
 
   const elapsed = clock.getElapsedTime();
   if (hoverObject) {
-    hoverObject.position.y = Math.sin(elapsed) * 0.2; // Effet de lévitation
+    hoverObject.position.y += Math.sin(elapsed) * 0.001; // Effet de lévitation
   }
 
   renderer.render(scene, camera);
@@ -197,7 +198,7 @@ function onMouseMove(event) {
   if (!hoverObject) return;
 
   const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+  const mouseY = (event.clientY / window.innerHeight) * 2 - 1;
 
   gsap.to(hoverObject.rotation, {
     x: mouseY * 0.5,
@@ -208,15 +209,31 @@ function onMouseMove(event) {
 
 // Navigation dans la file d'attente
 function updateSlider(direction) {
-  // Mise à jour de l'index
+  const previousObject = hoverObject;
+
+  // Mise à jour de l'index et de l'objet actuel
   index = (index + direction + objects.length) % objects.length;
-
-  // Animation de la file d'attente
-  gsap.to(objects, {
-    x: (o, i) => i * 2 - 4 - (index * 2), // Nouvelle position X
-    duration: 1,
-  });
-
-  // Mise à jour de l'objet en focus
   hoverObject = objects[index];
+
+  // Réinitialisation de l'objet précédent
+  resetObject(previousObject);
+
+  // Appliquer l'animation de bond à l'objet en focus
+  animateBounce(hoverObject);
+}
+
+// Réinitialise un objet de manière fluide
+function resetObject(object) {
+  if (!object) return;
+
+  gsap.to(object.position, { y: 0, duration: 0.5, ease: 'power2.out' }); // Réinitialise la hauteur
+  gsap.to(object.rotation, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power2.out' }); // Réinitialise les rotations
+}
+
+// Applique un effet de bond fluide à un objet
+function animateBounce(object) {
+  if (!object) return;
+
+  // object.position.y = -0.5; // Part d'une position basse
+  gsap.to(object.position, { y: 0.5, duration: 0.5, ease: 'power2.out' }); // Remonte avec un effet de bond
 }
