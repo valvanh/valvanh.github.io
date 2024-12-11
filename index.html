@@ -4,78 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentin Vanhaecke - Front-end Developer</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet preload" href="/css/style.css" as="style">
   <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <div id="loader">
-    <span id="loading__placeholder">Loading Resources</span>
-    <div id="loading__bar">
-      <div id="loading__bar__progress" style="width: 0%;">
-  
+  <main>
+    <header>
+      <a href="/" id="brand">Valentin Vanhaecke</a>
+      
+      <div id="menu">
+        <button id="menu__button">
+          <div class="menu__bar"></div>
+          <div class="menu__bar"></div>
+          <div class="menu__bar"></div>
+        </button>
+        <ul id="menu__list">
+          <li><a href="/">Projects</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
       </div>
-    </div>
-  </div>
-  <main id="app">
-    <div id="ui">
-      <div id="ui__top-left">
-        <a href="/">Valentin<br>Vanhaecke</a>
-        <p id="role">Front-end<br>Developer</p>
-      </div>
+    </header>
 
-      <div id="ui__top-right">
-        <nav id="menu">
-          <a href="/projects" class="menu__link">Projects</a>
-          <a href="/about" class="menu__link">About</a>
-        </nav>
-      </div>
+    <aside id="project-infos">
+      <div id="project-infos__title">Single project view</div>
+      <div id="project-infos__desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis nulla laborum laboriosam quisquam voluptate iusto.</div>
+      <a href="#" id="project-infos__link">View project</a>
+    </aside>
 
-      <div id="ui__bottom-left">
-        <p>Program: <span id="name-site">Portfolio 2024</span></p>
-        <p>Version: <span id="version-site">0.5</span></p>
-        <p>Release: <span id="release-program">018431334494314</span></p>
-        <br>
-        <p>Time: <span id="time">9:35 PM</span></p>
-        <p>Timezone: <span id="timezone">9:35 PM</span></p>
-        <p>Last location: <span id="last-location">50° 38' 14.277" N, 3° 4' 27.722" E</span></p>
-        <div id="graph-perform">
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-      </div>
-
-      <div id="ui__bottom-right">
-        <a href="https://www.instagram.com/vanskull_/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://twitter.com/VanSkull_Live" target="_blank" rel="noopener noreferrer">Twitter</a>
-        <a href="mailto:valentinvanh@gmail.com">valentinvanh@gmail.com</a>
-      </div>
-    </div>
-
-    <div id="main-content">
-      <div id="main-content__projects" class="section">
-        <div id="core-planet">
-
-        </div>
-      </div>
-      <div id="main-content__about" class="section">
-        <img src="" alt="" class="model-view" />
-        <div id="about_infos"></div>
-      </div>
+    <div id="navigation-slider">
+      <button id="navigation-slider__prev">Prev</button>
+      <button id="navigation-slider__next">Next</button>
+      
+      <button id="switch-light-night">Light/Night Mode</button>
     </div>
   </main>
-  <script src="/js/script.js"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+  <script type="module" src="/js/script.js"></script>
 </body>
 </html>

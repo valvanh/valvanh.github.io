@@ -1,170 +1,239 @@
-let DOMLoaded = false;
-let siteLoaded = false;
-let progressLoader = 0;
-let loaderPlaceHolders = ['Loading Resources', 'Retrieving Projects', 'Initializing Amazing Experience'];
-let loaderPlaceHolderDisplay = document.getElementById('loading__placeholder');
-let loader = document.getElementById('loader');
-let progressBarLoader = document.getElementById('loading__bar__progress');
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-let currentPage = 'home';
+let scene, camera, renderer, clock, controls;
+let objects = [];
+let hoverObject = null;
+let index = 0;
+let ambientLight;
 
-document.addEventListener('readystatechange', function() {
+document.addEventListener('readystatechange', function () {
   console.log("Fiered '" + document.readyState + "' after " + performance.now() + " ms");
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   console.log("Fiered DOMContentLoaded after " + performance.now() + " ms");
 
-  DOMLoaded = true;
-  let trueLoad = false;
-  let countCycle = 0;
-
-  setTimeout(() => {
-    trueLoad = true;
-  }, 5000);
-  setInterval(() => {
-    loaderPlaceHolderDisplay.innerText = loaderPlaceHolders[countCycle%3];
-    countCycle++;
-  }, 1500);
-  
-  setInterval(() => {
-    if(siteLoaded && trueLoad){
-      progressBarLoader.style.width = '100%';
-      
-      displayTime();
-      
-      setTimeout(() => {
-        loader.style.opacity = 0;
-      }, 500);
-      setTimeout(() => {
-        loader.remove()
-      }, 1500);
-    }else{
-      if(Math.random() < 0.5){
-        progressLoader += Math.random() * (20 - 5) + 5;
-        if (progressLoader > 90) {
-          progressLoader = 90;
-        }
-        progressBarLoader.style.width = `${progressLoader}%`;
-      }
-    }
-  }, 500);
-  
-}, false);
-
-window.addEventListener('load', function() {
-  siteLoaded = true;
-  fetchProjects();
-  console.log("Fiered load after " + performance.now() + " ms");
-}, false);
-
-// document.addEventListener('mousemove', function(event) {
-//   console.log(`Mouse : ${event.clientX}x${event.clientY}`);
-// });
-
-document.querySelectorAll('a').forEach(element => {
-  element.addEventListener('click', (event) => {
-    const blacklistUrl = ['mailto:valentinvanh@gmail.com', 'https://www.instagram.com/vanskull_/', 'https://twitter.com/VanSkull_Live'];
-    let target = element.getAttribute('href');
-    if ((target != '' || target != '#') && blacklistUrl.includes(target) != true) {
-      event.preventDefault();
-      console.log("Not blacklisted");
-      switch (target) {
-        case '/':
-          currentPage = 'home'
-          break;
-        case '/about':
-          currentPage = 'about'
-          break;
-        case '/projects':
-          currentPage = 'projects'
-          break;
-        default:
-          break;
-      }
-    }
-    if (currentPage == 'about') {
-      window.history.replaceState({ additionalInformation: 'Updated the URL with JS' }, 'Valentin Vanhaecke - Front-end Developer', `/about`);
-      document.querySelector('#main-content__projects').style.display = "none";  
-      document.querySelector('#main-content__about').style.display = "block";  
-    }else{
-      window.history.replaceState({ additionalInformation: 'Updated the URL with JS' }, 'Valentin Vanhaecke - Front-end Developer', `/`);
-      document.querySelector('#main-content__projects').style.display = "flex";  
-      document.querySelector('#main-content__about').style.display = "none";  
-    }
-  });
-});
-
-
-
-function bindClickProject(){
-  let allProjects = document.querySelectorAll('.single-project');
-
-  allProjects.forEach(project => {
-    console.log('project');
-    project.querySelector('.single-project__close-project').addEventListener('click', () => {
-      setTimeout(() => {
-        console.log("close project");
-        project.classList.remove('active');
-      }, 10);
-    });
-    project.addEventListener('click', () => {
-      console.log('click project');
-      allProjects.forEach(el => { el.classList.remove('active'); });
-      if (!project.classList.contains('active')) {
-        project.classList.add('active');
-      }
-    });
-  });
-}
-
-function displayTime() {
-  let timeDisplay = document.getElementById('time');
-  let timezoneDisplay = document.getElementById('timezone');
-
-  timeDisplay.innerText = formatAMPM(new Date());
-
-  timezoneDisplay.innerText = `UTC${new Date().getTimezoneOffset() < 0 ? '+' : '-'}${new Date().getTimezoneOffset() / 60 * -1}`;
-  setInterval(() => {
-    timeDisplay.innerText = formatAMPM(new Date());
-  }, 1000);
-}
-
-function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
-  return strTime;
-}
-
-async function fetchProjects() {
-  try {
-    const response = await fetch("/projects.json");
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-    const data = await response.json();
-    // console.log(projects);
-    data.projects.forEach(project => {
-      const div = document.createElement('div');
-      div.classList.add("single-project");
-      div.innerHTML = `<img src="${project.backgroundImage}" alt="${project.name}" class="single-project__background">
-            <div class="single-project__logo"><img src="${project.logo}" alt="${project.name} Logo" /></div>
-            <div class="single-project__title">${project.name}</div>
-            <div class="single-project__subtitle">${project.subtitle}</div>
-            <div class="single-project__date">${project.date}</div>
-            <div class="single-project__description">${project.description}</div>
-            <a href="${project.link}" class="single-project__link">See project</a>
-            <button class="single-project__close-project">Go back<button>`;
-      document.getElementById('core-planet').appendChild(div);
-    });
-
-    bindClickProject();
-  } catch (error) {
-    console.error(error.message);
+  if (getCookie('theme') == "" || getCookie('theme') == "light") {
+    setCookie('theme', 'light', 7);
+    document.body.classList.add('light-mode');
+    document.body.classList.remove('night-mode');
+  } else {
+    setCookie('theme', 'night', 7);
+    document.body.classList.remove('light-mode');
+    document.body.classList.add('night-mode');
   }
+
+  initScene();
+  initLights();
+  initObjects();
+  animate();
+}, false);
+
+window.addEventListener('load', function () {
+  console.log("Fiered load after " + performance.now() + " ms");
+  
+  initEventListeners();
+}, false);
+
+// ------------
+
+function loadProjectInfos(project) {
+  let titleProject = document.getElementById('project-infos__title');
+  let descProject = document.getElementById('project-infos__desc');
+  let linkProject = document.getElementById('project-infos__link');
+
+  titleProject.innerText = project.name;
+  descProject.innerText = project.description;
+  linkProject.innerText = project.link;
+}
+
+function switchLightNight() {
+  const theme = getCookie('theme') === 'night' ? 'light' : 'night';
+  setCookie('theme', theme, 7);
+
+  // Détermine les nouvelles couleurs et intensités
+  const newBackground = theme === 'night' ? '#17212b' : '#efecf6';
+  const newIntensity = theme === 'night' ? 0.3 : 0.8;
+
+  // Transition douce avec GSAP
+  gsap.to(ambientLight, { intensity: newIntensity, duration: 0.5, ease: 'power2.out' });
+  gsap.to(scene.background, {
+    r: new THREE.Color(newBackground).r,
+    g: new THREE.Color(newBackground).g,
+    b: new THREE.Color(newBackground).b,
+    duration: 0.5,
+    ease: 'power2.out',
+    onUpdate: () => {
+      // Met à jour la couleur de l'arrière-plan en temps réel
+      renderer.render(scene, camera);
+    }
+  });
+
+  // Transition visuelle pour le corps (CSS)
+  if (theme === 'night') {
+    document.body.classList.remove('light-mode');
+    document.body.classList.add('night-mode');
+  } else {
+    document.body.classList.add('light-mode');
+    document.body.classList.remove('night-mode');
+  }
+}
+
+function menuBurger() {
+  document.getElementById('menu').classList.toggle('open');
+}
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+// ---------
+
+// Initialisation de la scène
+function initScene() {
+  scene = new THREE.Scene();
+
+  // Configuration de la caméra
+  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 1, 10);
+
+  // Rendu
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // OrbitControls
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; // Douceur des mouvements
+  controls.dampingFactor = 0.05;
+
+  // Couleur initiale de l'arrière-plan
+  scene.background = new THREE.Color(getCookie('theme') === 'night' ? '#17212b' : '#efecf6');
+
+  clock = new THREE.Clock();
+  window.addEventListener('resize', onWindowResize);
+}
+
+// Gestion de la lumière
+function initLights() {
+  ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  directionalLight.position.set(10, 10, 10);
+  scene.add(directionalLight);
+}
+
+// Création et positionnement des objets
+function initObjects() {
+  const geometry = new THREE.BoxGeometry();
+  const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
+
+  for (let i = 0; i < 5; i++) {
+    const cube = new THREE.Mesh(geometry, material);
+    cube.position.set(i * 2 - 4, 0, i * -0.5); // Position en file
+    objects.push(cube);
+    scene.add(cube);
+  }
+
+  hoverObject = objects[0]; // L'objet en focus au début
+  animateBounce(hoverObject);
+}
+
+// Mise à jour lors du redimensionnement de la fenêtre
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// Animation continue (lévitation et rendu)
+function animate() {
+  requestAnimationFrame(animate);
+
+  // Mise à jour d'OrbitControls
+  controls.update();
+
+  const elapsed = clock.getElapsedTime();
+  if (hoverObject) {
+    hoverObject.position.y += Math.sin(elapsed) * 0.001; // Effet de lévitation
+  }
+
+  renderer.render(scene, camera);
+}
+
+// Gestion des événements
+function initEventListeners() {
+  document.getElementById('navigation-slider__next').addEventListener('click', () => updateSlider(1));
+  document.getElementById('navigation-slider__prev').addEventListener('click', () => updateSlider(-1));
+  document.getElementById('switch-light-night').addEventListener('click', switchLightNight);
+  document.getElementById('menu__button').addEventListener('click', menuBurger);
+
+  window.addEventListener('mousemove', onMouseMove);
+}
+
+// Rotation de l'objet en fonction de la souris
+function onMouseMove(event) {
+  if (!hoverObject) return;
+
+  const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  const mouseY = (event.clientY / window.innerHeight) * 2 - 1;
+
+  gsap.to(hoverObject.rotation, {
+    x: mouseY * 0.5,
+    y: mouseX * 0.5,
+    duration: 0.5,
+  });
+}
+
+// Navigation dans la file d'attente
+function updateSlider(direction) {
+  const previousObject = hoverObject;
+
+  // Mise à jour de l'index et de l'objet actuel
+  index = (index + direction + objects.length) % objects.length;
+  hoverObject = objects[index];
+
+  // Réinitialisation de l'objet précédent
+  resetObject(previousObject);
+
+  // Appliquer l'animation de bond à l'objet en focus
+  animateBounce(hoverObject);
+}
+
+// Réinitialise un objet de manière fluide
+function resetObject(object) {
+  if (!object) return;
+
+  gsap.to(object.position, { y: 0, duration: 0.5, ease: 'power2.out' }); // Réinitialise la hauteur
+  gsap.to(object.rotation, { x: 0, y: 0, z: 0, duration: 0.5, ease: 'power2.out' }); // Réinitialise les rotations
+}
+
+// Applique un effet de bond fluide à un objet
+function animateBounce(object) {
+  if (!object) return;
+
+  // object.position.y = -0.5; // Part d'une position basse
+  gsap.to(object.position, { y: 0.5, duration: 0.5, ease: 'power2.out' }); // Remonte avec un effet de bond
 }

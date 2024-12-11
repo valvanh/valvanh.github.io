@@ -1,6 +1,9 @@
-# Welcome to my world
+# Bienvenue dans mon monde 🕹
 
-This is my personnal portfolio created with all my love.
-Find all my work and my projects.
+Je suis Valentin Vanhaecke, un développeur web full-stack toujours en quête de nouveaux défis et de challenges. Ayant fait mes débuts il y a 8 ans, je me suis spécialisé dans le développement web, plus particulièrement dans le front-end. Toujours prêt à relever des défis quelque soit le support, je répond présent.
 
-If you're interested, send me a message and we could work together 🔥
+## Ceci est mon travail 📃
+
+Voici mon tout nouveau portfolio regroupant la plupart de mes projets des ces dernières années. Libre à vous de les parcourir et d'admirer les résultats de mon travail. J'espère qu'il vous plaira.
+
+Si vous êtes intéressé pour travailler ensemble, n'hésitez pas à me contacter.
