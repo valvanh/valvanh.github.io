@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
+let currentPage = "home";
+
 let scene, camera, renderer, clock, controls;
 let objects = [];
 let hoverObject = null;
@@ -85,6 +87,28 @@ function menuBurger() {
   document.getElementById('menu').classList.toggle('open');
 }
 
+function handleLinksMenu() {
+  let linksMenu = document.querySelectorAll('#menu__list a');
+  linksMenu.forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      switch (link.getAttribute('href')) {
+        case "/":
+          currentPage = "home"
+          break;
+
+        case "/about":
+          currentPage = "about"
+          break;
+            
+        default:
+          currentPage = "home"
+          break;
+      }
+    });
+  });
+}
+
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -106,6 +130,15 @@ function getCookie(cname) {
     }
   }
   return "";
+}
+
+function viewProject(event){
+  event.preventDefault();
+  currentPage = "project";
+  let currentProject = document.getElementById('project-infos__link').getAttribute('href');
+
+  console.log(currentProject);
+  
 }
 
 // ---------
@@ -189,8 +222,11 @@ function initEventListeners() {
   document.getElementById('navigation-slider__prev').addEventListener('click', () => updateSlider(-1));
   document.getElementById('switch-light-night').addEventListener('click', switchLightNight);
   document.getElementById('menu__button').addEventListener('click', menuBurger);
+  document.getElementById('project-infos__link').addEventListener('click', viewProject);
 
   window.addEventListener('mousemove', onMouseMove);
+
+  handleLinksMenu();
 }
 
 // Rotation de l'objet en fonction de la souris
@@ -220,6 +256,8 @@ function updateSlider(direction) {
 
   // Appliquer l'animation de bond à l'objet en focus
   animateBounce(hoverObject);
+
+  document.getElementById('project-infos__link').setAttribute('href', `#project-${index+1}`);
 }
 
 // Réinitialise un objet de manière fluide

@@ -44,6 +44,14 @@ header{
   align-items: flex-start;
   padding: 1.5rem;
   inset: 0 0 auto;
+  & > a#brand{
+    display: inline-block;
+    font-family: var(--font-title);
+    font-size: clamp(1.25rem, -0.875rem + 10.333vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--text-color);
+  }
 }
 
 #menu{
@@ -88,6 +96,12 @@ header{
     margin-left: auto;
     background: none;
     border: none;
+    &::after{
+      content: '';
+      position: absolute;
+      inset: -1rem;
+      border: 0.625rem;
+    }
     .menu__bar{
       position: absolute;
       width: calc(100% - 0.5rem);
@@ -138,12 +152,47 @@ header{
     margin-bottom: 1.5rem;
   }
   #project-infos__desc{
-    
+    font-size: 1rem;
+    line-height: 1.5;
   }
   a#project-infos__link{
     position: relative;
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    border: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+    padding: 0.5rem 1rem;
+    transition: 0.5s ease-out;
+    &::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 2rem;
+      bottom: 0;
+      display: inline-block;
+      width: 0.5px;
+      height: 100%;
+      border-left: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+      transition: 0.5s ease-out;
+    }
+    &::after{
+      content: "";
+      display: inline-block;
+      width: 0.5rem;
+      aspect-ratio: 1;
+      border: solid var(--text-color);
+      border-width: 0.0625rem 0.0625rem 0 0;
+      rotate: 45deg;
+      margin-left: 1.5rem;
+      transition: 0.5s ease-out;
+    }
+    &:is(:hover, :focus-visible){
+      color: var(--bg-color);
+      background-color: var(--text-color);
+      &::before,
+      &::after{
+        border-color: var(--bg-color);
+      }
+    }
   }
 }
 
