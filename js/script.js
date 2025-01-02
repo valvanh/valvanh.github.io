@@ -172,8 +172,10 @@ function handleLinks() {
           break;
             
         default:
-          if (href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("http://") || href.startsWith("https://")) {
+          if (href.startsWith("mailto:") || href.startsWith("tel:")) {
             window.location.href = href;
+          } else if (href.startsWith("http://") || href.startsWith("https://")) {
+            window.open(href, '_blank');
           }
           break;
       }
