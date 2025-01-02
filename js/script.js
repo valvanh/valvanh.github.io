@@ -31,9 +31,11 @@ document.addEventListener('DOMContentLoaded', async function () {
   initLights();
   initObjects();
   animate();
+
   let initialProject = await getProject(1);  
   loadProjectInfos(initialProject);
-}, false)
+}, false);
+
 window.addEventListener('load', function () {
   console.log("Fiered load after " + performance.now() + " ms");
   
@@ -48,14 +50,38 @@ function loadProjectInfos(project) {
   let descProject = document.getElementById('project-infos__desc');
   let descProjectView = document.getElementById('project-view__subtitle');
   let textProjectView = document.getElementById('project-view__text');
+  let dateProjectView = document.getElementById('project-view__date__value');
+  let toolsProjectView = document.getElementById('project-view__tools-wrapper');
 
   let linkProject = document.querySelector('#project-view__link a');
 
   titleProject.innerText = project.name;
   titleProjectView.innerText = project.name;
+
   descProject.innerText = project.subtitle;
   descProjectView.innerText = project.subtitle;
+
   linkProject.setAttribute('href', project.link);
+
+  textProjectView.innerHTML = project.description;
+
+  dateProjectView.innerText = project.date;
+
+  toolsProjectView.innerHTML = '';
+  project.tools.forEach(tool => {
+    toolsProjectView.innerHTML += `
+    <span class="single-tool">
+      <img src="/assets/images/tools/${tool.toLowerCase()}.svg" class="single-tool__icon" alt="${tool} Icon" />
+      <span class="single-tool__label">${tool}</span>
+    </span>
+    `;
+  });
+}
+
+function viewProject(event){
+  event.preventDefault();
+  currentPage = "project";
+  document.body.classList.add('project-view');
 }
 
 async function getProject(idProject) {
@@ -127,12 +153,13 @@ function handleCloseBurger() {
   });
 }
 
-function handleLinksMenu() {
-  let links = document.querySelectorAll('#menu__list a');
+function handleLinks() {
+  let links = document.querySelectorAll('a');
   links.forEach(link => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
-      switch (link.getAttribute('href')) {
+      const href = link.getAttribute('href');
+      switch (href) {
         case "/":
           currentPage = "home";
           document.body.classList.remove('project-view', 'about-view');
@@ -145,8 +172,9 @@ function handleLinksMenu() {
           break;
             
         default:
-          currentPage = "home";
-          document.body.classList.remove('project-view', 'about-view');
+          if (href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("http://") || href.startsWith("https://")) {
+            window.location.href = href;
+          }
           break;
       }
     });
@@ -174,12 +202,6 @@ function getCookie(cname) {
     }
   }
   return "";
-}
-
-function viewProject(event){
-  event.preventDefault();
-  currentPage = "project";
-  document.body.classList.add('project-view');
 }
 
 // ---------
@@ -267,7 +289,7 @@ function initEventListeners() {
 
   window.addEventListener('mousemove', onMouseMove);
 
-  handleLinksMenu();
+  handleLinks();
   handleCloseBurger();
 }
 

@@ -345,11 +345,167 @@ body.night-mode #navigation-slider{
 }
 
 #project-view{
-  background-color: lightcoral;
+  #project-view__head{
+    #project-view__title{
+      font-family: var(--font-title);
+      font-size: clamp(1.5rem, -0.875rem + 8.333vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    #project-view__subtitle{
+      display: block;
+      font-size: 0.875rem;
+      color: color-mix(in srgb, var(--text-color) 60%, var(--bg-color) 30%);
+      margin-bottom: 1.5rem;
+    }
+    #project-view__infos{
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 0.5rem 0.25rem;
+      #project-view__date{
+        strong{
+          display: block;
+          font-weight: 900;
+        }
+      }
+      #project-view__tools{
+        strong{
+          display: block;
+          font-weight: 900;
+        }
+        #project-view__tools-wrapper{
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          .single-tool{
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--text-color);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            .single-tool__icon{
+              display: inline-block;
+              width: 1rem;
+              aspect-ratio: 1;
+              object-fit: contain;
+              object-position: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  hr{
+    margin-block: 2rem;
+  }
+  #project-view__text{
+    margin-bottom: 3rem;
+  }
+  #project-view__link,
+  #project-view__back{
+    margin-top: 0.5rem;
+    a{
+      position: relative;
+      display: inline-block;
+      border: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+      padding: 0.5rem 1rem;
+      transition: 0.5s ease-out;
+      &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 2rem;
+        bottom: 0;
+        display: inline-block;
+        width: 0.5px;
+        height: 100%;
+        border-left: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+        transition: 0.5s ease-out;
+      }
+      &::after{
+        content: "";
+        display: inline-block;
+        width: 0.5rem;
+        aspect-ratio: 1;
+        border: solid var(--text-color);
+        border-width: 0.0625rem 0.0625rem 0 0;
+        rotate: 45deg;
+        margin-left: 1.5rem;
+        transition: 0.5s ease-out;
+      }
+      &:is(:hover, :focus-visible){
+        color: var(--bg-color);
+        background-color: var(--text-color);
+        &::before,
+        &::after{
+          border-color: var(--bg-color);
+        }
+      }
+    }
+  }
 }
 
 #about-view{
-  background-color: lightgreen;
+  #about-view__head{
+    h2{
+      font-family: var(--font-title);
+      font-size: clamp(1.5rem, -0.875rem + 8.333vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+  }
+  hr{
+    margin-block: 2rem;
+  }
+  #about-view__text{
+    margin-bottom: 3rem;
+  }
+  #about-view__contact,
+  #about-view__back{
+    margin-top: 0.5rem;
+    a{
+      position: relative;
+      display: inline-block;
+      border: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+      padding: 0.5rem 1rem;
+      transition: 0.5s ease-out;
+      &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 2rem;
+        bottom: 0;
+        display: inline-block;
+        width: 0.5px;
+        height: 100%;
+        border-left: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+        transition: 0.5s ease-out;
+      }
+      &::after{
+        content: "";
+        display: inline-block;
+        width: 0.5rem;
+        aspect-ratio: 1;
+        border: solid var(--text-color);
+        border-width: 0.0625rem 0.0625rem 0 0;
+        rotate: 45deg;
+        margin-left: 1.5rem;
+        transition: 0.5s ease-out;
+      }
+      &:is(:hover, :focus-visible){
+        color: var(--bg-color);
+        background-color: var(--text-color);
+        &::before,
+        &::after{
+          border-color: var(--bg-color);
+        }
+      }
+    }
+  }
 }
 
 body{
