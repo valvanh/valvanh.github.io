@@ -60,6 +60,7 @@ header{
   background-color: var(--text-color);
   border-radius: 0.625rem;
   transition: 0.5s ease-in-out;
+  z-index: 99999;
   &.open{
     #menu__button{
       .menu__bar{
@@ -144,6 +145,7 @@ header{
   left: 5vw;
   translate: 0 -50%;
   width: clamp(10px, 40%, 500px);  
+  max-height: calc(100vh - 4rem);
   #project-infos__title{
     font-family: var(--font-title);
     font-size: clamp(1.5rem, -0.875rem + 8.333vw, 3.5rem);
@@ -208,6 +210,7 @@ header{
   border-radius: 0.625rem;
   background-color: var(--text-color);
   transition: 0.5s ease-in-out;
+  z-index: 99999;
   #navigation-slider__prev,
   #navigation-slider__next{
     cursor: pointer;
@@ -328,5 +331,54 @@ body.night-mode #navigation-slider{
     &::after{
       opacity: 1;
     }
+  }
+}
+
+#project-view,
+#about-view{
+  position: absolute;
+  top: 50%;
+  right: 5vw;
+  translate: 0 -50%;
+  width: clamp(10px, 55%, 700px);  
+  height: clamp(4rem, 100vh, calc(100vh - 4rem));
+}
+
+#project-view{
+  background-color: lightcoral;
+}
+
+#about-view{
+  background-color: lightgreen;
+}
+
+body{
+  &:is(.project-view, .about-view){
+    #project-infos{
+      display: none;
+    }
+    #navigation-slider{
+      #navigation-slider__prev,
+      #navigation-slider__next{
+        display: none;
+      }
+      #switch-light-night{
+        margin-left: 0;
+      }
+    }
+  }
+  &:not(.project-view){
+    #project-view{
+      display: none;
+    }
+  }
+  &:not(.about-view){
+    #about-view{
+      display: none;
+    }
+  }
+  &.project-view{
+  }
+  &.about-view{
   }
 }

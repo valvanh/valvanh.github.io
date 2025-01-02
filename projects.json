@@ -7,7 +7,8 @@
       "backgroundImage": "/assets/images/projects/background/wonderin-background.webp",
       "date": "2022",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": "https://wonderin.com/"
+      "link": "https://wonderin.com/",
+      "tools": ["Laravel"]
     },
     {
       "name": "All In One",
@@ -16,7 +17,8 @@
       "backgroundImage": "/assets/images/projects/background/all-in-one-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": "https://all-in-one.com/"
+      "link": "https://all-in-one.com/",
+      "tools": ["AdonisJS"]
     },
     {
       "name": "Agrio Agriculture",
@@ -25,7 +27,8 @@
       "backgroundImage": "/assets/images/projects/background/agrio-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": "https://agrio-agriculture.net/"
+      "link": "https://agrio-agriculture.net/",
+      "tools": ["AstroJS"]
     },
     {
       "name": "Wolface",
@@ -34,7 +37,8 @@
       "backgroundImage": "/assets/images/projects/background/wolface-background.webp",
       "date": "2022",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": "https://wolface.com/"
+      "link": "https://wolface.com/",
+      "tools": ["PHP", "MySQL"]
     },
     {
       "name": "3D",
@@ -43,7 +47,8 @@
       "backgroundImage": "/assets/images/projects/background/3d-world-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": "https://3d-world.fr/"
+      "link": "https://3d-world.fr/",
+      "tools": ["ReactJS", "ThreeJS"]
     },
     {
       "name": "Geogames",
@@ -52,7 +57,8 @@
       "backgroundImage": "/assets/images/projects/background/geogames-background.webp",
       "date": "2024",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus tenetur sapiente nesciunt et nam, excepturi odio voluptate unde, cumque eaque optio corrupti esse perspiciatis inventore impedit obcaecati eos veniam at?",
-      "link": "https://geogames.io/"
+      "link": "https://geogames.io/",
+      "tools": ["JavaScript"]
     }
   ]
 }

@@ -14,7 +14,7 @@ document.addEventListener('readystatechange', function () {
   console.log("Fiered '" + document.readyState + "' after " + performance.now() + " ms");
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
   console.log("Fiered DOMContentLoaded after " + performance.now() + " ms");
 
   if (getCookie('theme') == "" || getCookie('theme') == "light") {
@@ -31,8 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
   initLights();
   initObjects();
   animate();
-}, false);
-
+  let initialProject = await getProject(1);  
+  loadProjectInfos(initialProject);
+}, false)
 window.addEventListener('load', function () {
   console.log("Fiered load after " + performance.now() + " ms");
   
@@ -43,12 +44,34 @@ window.addEventListener('load', function () {
 
 function loadProjectInfos(project) {
   let titleProject = document.getElementById('project-infos__title');
+  let titleProjectView = document.getElementById('project-view__title');
   let descProject = document.getElementById('project-infos__desc');
-  let linkProject = document.getElementById('project-infos__link');
+  let descProjectView = document.getElementById('project-view__subtitle');
+  let textProjectView = document.getElementById('project-view__text');
+
+  let linkProject = document.querySelector('#project-view__link a');
 
   titleProject.innerText = project.name;
-  descProject.innerText = project.description;
-  linkProject.innerText = project.link;
+  titleProjectView.innerText = project.name;
+  descProject.innerText = project.subtitle;
+  descProjectView.innerText = project.subtitle;
+  linkProject.setAttribute('href', project.link);
+}
+
+async function getProject(idProject) {
+  try {
+    const response = await fetch('/projects.json');
+
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const results = await response.json();
+    
+    return results.projects[idProject-1];
+
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
 function switchLightNight() {
@@ -87,22 +110,43 @@ function menuBurger() {
   document.getElementById('menu').classList.toggle('open');
 }
 
+function handleCloseBurger() {
+  document.addEventListener('click', (event) => {
+    let menuBurger = document.getElementById("menu");
+    let menuBurgerBound = menuBurger.getBoundingClientRect();
+    if(menuBurger.classList.contains('open')){
+      if (!(
+        event.clientX >= menuBurgerBound.x &&
+        event.clientX <= menuBurgerBound.x + menuBurgerBound.width &&
+        event.clientY >= menuBurgerBound.y &&
+        event.clientY <= menuBurgerBound.y + menuBurgerBound.height
+      )) {
+        menuBurger.classList.remove('open');
+      }
+    }
+  });
+}
+
 function handleLinksMenu() {
-  let linksMenu = document.querySelectorAll('#menu__list a');
-  linksMenu.forEach(link => {
+  let links = document.querySelectorAll('#menu__list a');
+  links.forEach(link => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
       switch (link.getAttribute('href')) {
         case "/":
-          currentPage = "home"
+          currentPage = "home";
+          document.body.classList.remove('project-view', 'about-view');
           break;
-
+          
         case "/about":
-          currentPage = "about"
+          currentPage = "about";
+          document.body.classList.add('about-view');
+          document.body.classList.remove('project-view');
           break;
             
         default:
-          currentPage = "home"
+          currentPage = "home";
+          document.body.classList.remove('project-view', 'about-view');
           break;
       }
     });
@@ -135,10 +179,7 @@ function getCookie(cname) {
 function viewProject(event){
   event.preventDefault();
   currentPage = "project";
-  let currentProject = document.getElementById('project-infos__link').getAttribute('href');
-
-  console.log(currentProject);
-  
+  document.body.classList.add('project-view');
 }
 
 // ---------
@@ -227,6 +268,7 @@ function initEventListeners() {
   window.addEventListener('mousemove', onMouseMove);
 
   handleLinksMenu();
+  handleCloseBurger();
 }
 
 // Rotation de l'objet en fonction de la souris
@@ -244,7 +286,7 @@ function onMouseMove(event) {
 }
 
 // Navigation dans la file d'attente
-function updateSlider(direction) {
+async function updateSlider(direction) {
   const previousObject = hoverObject;
 
   // Mise à jour de l'index et de l'objet actuel
@@ -257,7 +299,10 @@ function updateSlider(direction) {
   // Appliquer l'animation de bond à l'objet en focus
   animateBounce(hoverObject);
 
+  let project = await getProject(index+1);  
+  loadProjectInfos(project);
   document.getElementById('project-infos__link').setAttribute('href', `#project-${index+1}`);
+
 }
 
 // Réinitialise un objet de manière fluide
