@@ -248,7 +248,7 @@ function initObjects() {
   const geometry = new THREE.BoxGeometry();
   const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const cube = new THREE.Mesh(geometry, material);
     cube.position.set(i * 2 - 4, 0, i * -0.5); // Position en file
     objects.push(cube);

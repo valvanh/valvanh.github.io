@@ -341,7 +341,7 @@ body.night-mode #navigation-slider{
   right: 5vw;
   translate: 0 -50%;
   width: clamp(10px, 55%, 700px);  
-  height: clamp(4rem, 100vh, calc(100vh - 4rem));
+  height: clamp(4rem, 100vh, calc(100vh - 10rem));
 }
 
 #project-view{
@@ -367,12 +367,14 @@ body.night-mode #navigation-slider{
         strong{
           display: block;
           font-weight: 900;
+          margin-bottom: 0.5rem;
         }
       }
       #project-view__tools{
         strong{
           display: block;
           font-weight: 900;
+          margin-bottom: 0.5rem;
         }
         #project-view__tools-wrapper{
           display: flex;
@@ -401,8 +403,18 @@ body.night-mode #navigation-slider{
   hr{
     margin-block: 2rem;
   }
-  #project-view__text{
+  #project-view__content{
+    height: calc(80vh - 300px);
+    overflow-y: auto;
     margin-bottom: 3rem;
+    #project-view__text{
+      margin-bottom: 1.5rem;
+      & > :not(:last-child){
+        margin-bottom: 1rem;
+      }
+    }
+    #project-view__gallery{
+    }
   }
   #project-view__link,
   #project-view__back{
