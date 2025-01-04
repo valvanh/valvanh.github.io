@@ -4,7 +4,13 @@
       "name": "Wonderin'",
       "subtitle": "Where writers write, there will always be readers to read them. Travel to worlds imagined by millions of people and share your stories with the world too.",
       "logo": "/assets/images/projects/logo/wonderin-logo.webp",
-      "backgroundImage": "/assets/images/projects/background/wonderin-background.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/wonderin-1.webp",
+        "/assets/images/projects/gallery/wonderin-2.webp",
+        "/assets/images/projects/gallery/wonderin-3.webp",
+        "/assets/images/projects/gallery/wonderin-4.webp",
+        "/assets/images/projects/gallery/wonderin-5.webp"
+      ],
       "date": "2022",
       "description": "<p>Wonderin' is a platform dedicated to writing and reading enthusiasts, offering an interactive space where everyone can share their stories and discover those of other enthusiasts. Inspired by the concept of Wattpad, this project aims to create a true literary community where everyone's imagination comes to life through original stories.</p><p>The application offers various features that promote user engagement: publishing chapters, following favorite authors, comments and reactions on works, as well as a personalized recommendation system based on reading preferences. Authors can structure their writings, illustrate their stories and interact directly with their audience to enrich their creative process.</p><p>Developed as part of a school project, Wonderin' is the result of a collaboration between a graphic designer and front-end developer and myself, in charge of back-end development with Laravel. My work focused on user management, structuring databases, setting up APIs, as well as optimizing the site's performance and security. Through this experience, I was able to deepen my skills in web development while contributing to a platform designed to encourage creativity and sharing within a dynamic community.</p>",
       "link": "https://wonderin.com/",
@@ -14,7 +20,13 @@
       "name": "All In One",
       "subtitle": "Are you a content creator? Having trouble managing your networks? Stop everything! All In One is the solution. Manage all your networks from one place without any hassle.",
       "logo": "/assets/images/projects/logo/all-in-one-logo.webp",
-      "backgroundImage": "/assets/images/projects/background/all-in-one-background.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/all-in-one-1.webp",
+        "/assets/images/projects/gallery/all-in-one-2.webp",
+        "/assets/images/projects/gallery/all-in-one-3.webp",
+        "/assets/images/projects/gallery/all-in-one-4.webp",
+        "/assets/images/projects/gallery/all-in-one-5.webp"
+      ],
       "date": "2024",
       "description": "<p>All In One is an innovative solution designed for content creators who want to centralize and automate the management of their social networks. In a world where online presence is essential, this application allows them to publish, plan and analyze their content on multiple platforms from a single space, thus optimizing their time and productivity.</p><p>With All In One, users can connect their YouTube, Twitter, Instagram, TikTok and many other accounts to manage their publications smoothly and efficiently. The application integrates an automated rules system, allowing the content distribution to be adapted according to each platform. For example, when a new video is uploaded to YouTube, a promotional post must be created on Twitter and Instagram. In addition, the tool offers an advanced dashboard with detailed statistics on publication performance and audience engagement, as well as a planning system to organize posts in advance.</p><p>Entirely designed, developed and crafted by me with AdonisJs, All In One is the result of a comprehensive work combining back-end and front-end development, social media API management, performance optimization and intuitive user experience. This project allowed me to perfect my full-stack development skills while meeting the concrete needs of content creators, offering them a powerful and flexible tool to effectively manage their online presence.</p>",
       "link": "https://all-in-one.com/",
@@ -24,7 +36,13 @@
       "name": "Agrio Agriculture",
       "subtitle": "The future of ecology and agriculture. Join the Agrio Agriculture adventure and contribute to a healthier and more eco-responsible diet.",
       "logo": "/assets/images/projects/logo/agrio-logo.webp",
-      "backgroundImage": "/assets/images/projects/background/agrio-background.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/agrio-1.webp",
+        "/assets/images/projects/gallery/agrio-2.webp",
+        "/assets/images/projects/gallery/agrio-3.webp",
+        "/assets/images/projects/gallery/agrio-4.webp",
+        "/assets/images/projects/gallery/agrio-5.webp"
+      ],
       "date": "2024",
       "description": "<p>Agrio Agriculture is a modern and refined website designed to promote healthier and more eco-responsible agriculture. This project aims to highlight the commitments and services of the company Agrio Agriculture, specialized in sustainable and innovative agricultural practices. In line with its mission, the site offers a fluid and intuitive interface allowing visitors to discover ecological initiatives, products and services offered, as well as informative articles on modern agriculture.</p><p>The main objective of the project was to design a complete site from a model recovered on Figma, while exploring a new framework, AstroJS. The site includes several essential sections, including an immersive home page, a presentation of the company, a dynamic blog powered by a CMS (WordPress type), and an interactive contact form facilitating exchanges with visitors and potential customers.</p><p>By developing Agrio Agriculture, I was able to deepen my skills in model integration, web development with AstroJS, content management via a CMS, and performance optimization for smooth and fast navigation. This project also allowed me to work on crucial aspects such as SEO, accessibility and multi-device compatibility, thus ensuring an optimal user experience on all media.</p>",
       "link": "https://agrio-agriculture.net/",
@@ -34,7 +52,13 @@
       "name": "Wolface",
       "subtitle": "Share your best moments with friends, family and more on Wolface.",
       "logo": "/assets/images/projects/logo/wolface-logo.webp",
-      "backgroundImage": "/assets/images/projects/background/wolface-background.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/wolface-1.webp",
+        "/assets/images/projects/gallery/wolface-2.webp",
+        "/assets/images/projects/gallery/wolface-3.webp",
+        "/assets/images/projects/gallery/wolface-4.webp",
+        "/assets/images/projects/gallery/wolface-5.webp"
+      ],
       "date": "2022",
       "description": "<p>Wolface is a student project that aims to recreate the experience of a complete social network, similar to Facebook, with a focus on user interaction. The main objective was to explore and master the fundamental concepts of web development by designing a dynamic platform where users can share their best moments, interact with their community, and build relationships with their loved ones.</p><p>Developed entirely in PHP and based on a MySQL database, Wolface integrates all the essential features of a modern social network. Users can register and log in securely, publish content, like, comment and share posts, and add friends to build their personal network. A personalized news feed displays the latest posts from friends, allowing for a fluid and immersive interaction.</p><p>This project was carried out in collaboration with a graphic designer, who was responsible for the design and ergonomics of the site, while I took care of the entire development, both front-end and back-end. This work allowed me to strengthen my skills in database management, user session manipulation, dynamic interface creation and data security. Thanks to this experience, I gained a better understanding of how social networks work and the technical challenges related to their design, while implementing a robust and efficient architecture.</p>",
       "link": "https://wolface.com/",
@@ -44,7 +68,13 @@
       "name": "3D",
       "subtitle": "My first 3D website using ThreeJS",
       "logo": "/assets/images/projects/logo/3d-world-logo.webp",
-      "backgroundImage": "/assets/images/projects/background/3d-world-background.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/3d-world-1.webp",
+        "/assets/images/projects/gallery/3d-world-2.webp",
+        "/assets/images/projects/gallery/3d-world-3.webp",
+        "/assets/images/projects/gallery/3d-world-4.webp",
+        "/assets/images/projects/gallery/3d-world-5.webp"
+      ],
       "date": "2024",
       "description": "<p>3D is an experimental project that aims to explore interactive web development by combining ReactJS and ThreeJS to create an immersive 3D user experience. Designed as a one-page site, this project is above all an exploration of creative coding, mixing fluid animations, dynamic transitions and the integration of 3D elements to offer a visually captivating navigation.</p><p>Starting from a mockup recovered from Figma, the objective was to bring a static design to life by integrating three-dimensional elements and ensuring a fluid interaction with the user. Thanks to ThreeJS, I was able to model and animate 3D objects, while using ReactJS to structure and organize the site in a modular way. Every detail was worked on to offer an aesthetic and intuitive experience, with fluid animations during transitions between sections, optimized performance management and natural interactivity with visual elements.</p><p>This project was a great opportunity to hone my skills in advanced front-end development, WebGL rendering optimization, and modern and dynamic interface design. By pushing the boundaries of interactive design, 3D represents a fusion of technology and creativity, demonstrating the potential of immersive and interactive web environments.</p>",
       "link": "https://3d-world.fr/",
@@ -54,7 +84,13 @@
       "name": "Geogames",
       "subtitle": "Think you're a video game expert? Let's check it out right now. Try to find out which game you landed in and where.",
       "logo": "/assets/images/projects/logo/geogames-logo.webp",
-      "backgroundImage": "/assets/images/projects/background/geogames-background.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/geogames-1.webp",
+        "/assets/images/projects/gallery/geogames-2.webp",
+        "/assets/images/projects/gallery/geogames-3.webp",
+        "/assets/images/projects/gallery/geogames-4.webp",
+        "/assets/images/projects/gallery/geogames-5.webp"
+      ],
       "date": "2024",
       "description": "<p>Geogames is an interactive web game inspired by the Redbull GeoGamer concept, combining exploration, visual memory and video game culture. Halfway between GeoGuessr and a video game quiz, it invites players to dive into environments from different games and take on a double challenge: identify the title of the game and precisely locate their position on the virtual map of this world.</p><p>The idea was born out of frustration: not being able to play the official version of the concept, I decided to take on the technical and creative challenge of developing it myself. Designed entirely in pure JavaScript (without a framework) and ThreeJS, Geogames offers an immersive 3D experience, allowing players to observe their environment from all angles before making their guesses. The game also tests their knowledge and sense of direction through varied levels, ranging from great video game classics to lesser-known worlds.</p><p>To make the experience even more competitive and engaging, Geogames integrates a scoring system that allows players to record their performance and try to improve their result with each new game. The more precise the answer, the higher the score, thus encouraging players to improve their observation and knowledge of video games. This progression system provides a real challenge and encourages replaying to achieve the best possible score.</p><p>This project allowed me to deepen my skills in native JavaScript, in manipulating 3D scenes with ThreeJS, and in optimizing performance to ensure maximum fluidity. It also represents a reflection on user interaction, game design, and the implementation of an answer validation and scoring system, making the experience as fun as it is stimulating. Geogames is thus the culmination of a passion for video games and web development, combining creativity and technicality to offer an original and competitive experience to players.</p>",
       "link": "https://geogames.io/",
