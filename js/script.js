@@ -17,6 +17,8 @@ document.addEventListener('readystatechange', function () {
 document.addEventListener('DOMContentLoaded', async function () {
   console.log("Fiered DOMContentLoaded after " + performance.now() + " ms");
 
+  loadingScreen();
+
   if (getCookie('theme') == "" || getCookie('theme') == "light") {
     setCookie('theme', 'light', 7);
     document.body.classList.add('light-mode');
@@ -43,6 +45,23 @@ window.addEventListener('load', function () {
 }, false);
 
 // ------------
+
+function loadingScreen() {
+  setTimeout(handleModalBuild, 10);
+}
+function handleModalBuild() {
+  let modalBuild = document.getElementById('modal-build');
+  let buttonCloseModal = document.getElementById('close-modal');
+
+  modalBuild.showModal();
+
+  buttonCloseModal.addEventListener('click', () => {
+    if(modalBuild.open){
+      modalBuild.close();
+      modalBuild.remove();
+    }
+  });
+}
 
 function loadProjectInfos(project) {
   let titleProject = document.getElementById('project-infos__title');
