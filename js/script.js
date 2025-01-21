@@ -9,6 +9,7 @@ let objects = [];
 let hoverObject = null;
 let index = 0;
 let ambientLight;
+let loading = false;
 
 document.addEventListener('readystatechange', function () {
   console.log("Fiered '" + document.readyState + "' after " + performance.now() + " ms");
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   console.log("Fiered DOMContentLoaded after " + performance.now() + " ms");
 
   loadingScreen();
+  handleModalBuild();
 
   if (getCookie('theme') == "" || getCookie('theme') == "light") {
     setCookie('theme', 'light', 7);
@@ -40,14 +42,30 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 window.addEventListener('load', function () {
   console.log("Fiered load after " + performance.now() + " ms");
-  
+  loading = true;
   initEventListeners();
 }, false);
 
 // ------------
 
 function loadingScreen() {
-  setTimeout(handleModalBuild, 10);
+  let progressSpin = 6;
+  let loopAnimSpin = setInterval(() => {
+    if (!loading) {
+      progressSpin = progressSpin + (Math.random(100) / 10);
+      progressSpin = progressSpin > 90 && 90;
+    } else {
+      progressSpin = 94;
+      setTimeout(() => {
+        document.getElementById('loading-screen').style.opacity = 0;
+      }, 1200);
+      setTimeout(() => {
+        document.getElementById('loading-screen').remove();
+      }, 2000);
+      clearInterval(loopAnimSpin);
+    }
+    document.getElementById('loading-screen__spin').setAttribute('style', `--progressLoadingSpin: ${progressSpin}%;`);
+  }, 800);
 }
 function handleModalBuild() {
   let modalBuild = document.getElementById('modal-build');
@@ -57,8 +75,12 @@ function handleModalBuild() {
 
   buttonCloseModal.addEventListener('click', () => {
     if(modalBuild.open){
-      modalBuild.close();
-      modalBuild.remove();
+      modalBuild.classList.add('close');
+      modalBuild.style.opacity = 0;
+      setTimeout(() => {
+        modalBuild.close();
+        modalBuild.remove();
+      }, 500);
     }
   });
 }
@@ -233,7 +255,10 @@ function initScene() {
 
   // Configuration de la caméra
   camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(0, 1, 10);
+  camera.position.set(-4.5, 1, 3);
+  camera.rotation.x -= 10 * (Math.PI / 180);
+  camera.rotation.y -= 45 * (Math.PI / 180);
+  camera.rotation.z -= 10 * (Math.PI / 180);
 
   // Rendu
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -241,9 +266,9 @@ function initScene() {
   document.body.appendChild(renderer.domElement);
 
   // OrbitControls
-  controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true; // Douceur des mouvements
-  controls.dampingFactor = 0.05;
+  // controls = new OrbitControls(camera, renderer.domElement);
+  // controls.enableDamping = true; // Douceur des mouvements
+  // controls.dampingFactor = 0.05;
 
   // Couleur initiale de l'arrière-plan
   scene.background = new THREE.Color(getCookie('theme') === 'night' ? '#17212b' : '#efecf6');
@@ -269,7 +294,7 @@ function initObjects() {
 
   for (let i = 0; i < 6; i++) {
     const cube = new THREE.Mesh(geometry, material);
-    cube.position.set(i * 2 - 4, 0, i * -0.5); // Position en file
+    cube.position.set(i * 1.1, 0, 0); // Position en file
     objects.push(cube);
     scene.add(cube);
   }
@@ -290,7 +315,7 @@ function animate() {
   requestAnimationFrame(animate);
 
   // Mise à jour d'OrbitControls
-  controls.update();
+  // controls.update();
 
   const elapsed = clock.getElapsedTime();
   if (hoverObject) {

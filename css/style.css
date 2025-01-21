@@ -54,7 +54,69 @@ header{
   }
 }
 
+@property --progressLoadingSpin {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 6%;
+}
+
 #loading-screen{
+  position: fixed;
+  inset: 0;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  z-index: 999999;
+  transition: opacity 0.5s ease;
+  #loading-screen__spin{
+    --progressLoadingSpin: 6%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    width: clamp(4rem, 100%, 80vw);
+    background-image: conic-gradient(
+      from 180deg at 50% 50%,
+      var(--bg-color) 6%,
+      var(--text-color) 6%,
+      var(--text-color) var(--progressLoadingSpin),
+      color-mix(in srgb, var(--text-color), transparent 80%) var(--progressLoadingSpin),
+      color-mix(in srgb, var(--text-color), transparent 80%) 94%,
+      var(--bg-color) 94%
+    );
+    transition: 0.7s ease-out;
+    transition-property: --progressLoadingSpin;
+    @media (aspect-ratio > 1) {
+      width: auto;
+      height: clamp(4rem, 100%, 80vw);
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      inset: 0.5rem;
+      border-radius: 50%;
+      background-color: var(--bg-color);
+    }
+    #loading-screen__progress{
+      position: relative;
+      font-size: clamp(1rem, -0.875rem + 5.333vw, 2.5rem);
+      z-index: 1;
+      animation: opacTitleLoading .5s linear 0s infinite alternate forwards;
+    }
+  }
+}
+@keyframes opacTitleLoading {
+  100%{
+    opacity: 0.5;
+  }
 }
 
 #modal-build{
@@ -64,9 +126,18 @@ header{
   max-height: 80vh;
   padding: 1rem;
   text-align: center;
-  filter: drop-shadow(0 0 );
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  filter: drop-shadow(0 0 2rem color-mix(in srgb, var(--bg-color), transparent 80%));
+  transition: 0.5s ease-out;
   &::backdrop{
     background-color: rgba(0 0 0 / 0.75);
+    transition: 0.5s ease-out;
+  }
+  &.close{
+    &::backdrop{
+      background-color: rgba(0 0 0 / 0);
+    }
   }
   h3{
     font-family: var(--font-title);
@@ -74,13 +145,14 @@ header{
     font-weight: 700;
     margin-bottom: 1.5rem;
   }
-  p{
-  }
   button{
+    cursor: pointer;
     position: relative;
     display: inline-block;
     margin-top: 1.5rem;
-    border: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border: 0.5px dashed color-mix(in srgb, var(--bg-color) 100%, var(--text-color) 50%);
     padding: 0.5rem 1rem;
     transition: 0.5s ease-out;
     &::before{
@@ -92,7 +164,7 @@ header{
       display: inline-block;
       width: 0.5px;
       height: 100%;
-      border-left: 0.5px dashed color-mix(in srgb, var(--text-color) 100%, var(--bg-color) 50%);
+      border-left: 0.5px dashed color-mix(in srgb, var(--bg-color) 100%, var(--text-color) 50%);
       transition: 0.5s ease-out;
     }
     &::after{
