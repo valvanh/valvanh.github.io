@@ -635,6 +635,7 @@ body.night-mode #navigation-slider{
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      flex-wrap: wrap;
       gap: 0.5rem;
       img.tool__icon{
         display: block;
