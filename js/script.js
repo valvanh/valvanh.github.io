@@ -1,10 +1,9 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 let currentPage = "home";
 
-let scene, camera, renderer, clock, controls;
+let scene, camera, renderer, clock;
 let objects = [];
 let hoverObject = null;
 let index = 0;
@@ -71,7 +70,7 @@ function handleModalBuild() {
   let modalBuild = document.getElementById('modal-build');
   let buttonCloseModal = document.getElementById('close-modal');
 
-  modalBuild.showModal();
+  // modalBuild.showModal();
 
   buttonCloseModal.addEventListener('click', () => {
     if(modalBuild.open){
@@ -123,6 +122,34 @@ function viewProject(event){
   event.preventDefault();
   currentPage = "project";
   document.body.classList.add('project-view');
+  
+  gsap.to(camera.position, {
+    x: -2.5,
+    z: 3.75,
+    duration: 0.5,
+    ease: 'power2.out',
+  });
+
+  objects.forEach((cube) => {
+    if (cube !== hoverObject) {
+      gsap.to(cube.position, {
+        y: -1, // Descendre
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+      gsap.to(cube.material, {
+        opacity: 0, // Rendre invisible
+        duration: 0.5,
+        ease: 'power2.out',
+        onComplete: () => {
+          cube.visible = false; // Désactiver la visibilité après l'animation
+        },
+      });
+    } else {
+      cube.material.opacity = 1;
+      cube.visible = true;
+    }
+  });
 }
 
 async function getProject(idProject) {
@@ -204,12 +231,58 @@ function handleLinks() {
         case "/":
           currentPage = "home";
           document.body.classList.remove('project-view', 'about-view');
+          
+          gsap.to(camera.position, {
+            x: -3.75,
+            z: 2.5,
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+
+          objects.forEach((cube) => {
+            cube.visible = true;
+            if (cube !== hoverObject) {
+              gsap.to(cube.position, {
+                y: 0, // Monter
+                duration: 0.5,
+                ease: 'power2.out',
+              });
+              gsap.to(cube.material, {
+                opacity: 1, // Rendre visible
+                duration: 0.5,
+                ease: 'power2.out',
+              });
+            } else {
+              gsap.to(cube.material, {
+                opacity: 1, // Rendre visible
+                duration: 0.5,
+                ease: 'power2.out',
+              });
+            }
+          });
           break;
           
         case "/about":
           currentPage = "about";
           document.body.classList.add('about-view');
           document.body.classList.remove('project-view');
+          
+          gsap.to(camera.position, {
+            x: -2.5,
+            z: 3.75,
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+          objects.forEach((cube) => {
+            gsap.to(cube.material, {
+              opacity: 0, // Rendre invisible
+              duration: 0.5,
+              ease: 'power2.out',
+              onComplete: () => {
+                cube.visible = false; // Désactiver la visibilité après l'animation
+              },
+            });
+          });
           break;
             
         default:
@@ -255,20 +328,15 @@ function initScene() {
 
   // Configuration de la caméra
   camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(-4.5, 1, 3);
-  camera.rotation.x -= 10 * (Math.PI / 180);
+  camera.position.set(-3.75, 0.5, 2.5);
+  // camera.rotation.x -= 0 * (Math.PI / 180);
   camera.rotation.y -= 45 * (Math.PI / 180);
-  camera.rotation.z -= 10 * (Math.PI / 180);
+  // camera.rotation.z -= 0 * (Math.PI / 180);
 
   // Rendu
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
-
-  // OrbitControls
-  // controls = new OrbitControls(camera, renderer.domElement);
-  // controls.enableDamping = true; // Douceur des mouvements
-  // controls.dampingFactor = 0.05;
 
   // Couleur initiale de l'arrière-plan
   scene.background = new THREE.Color(getCookie('theme') === 'night' ? '#17212b' : '#efecf6');
@@ -290,9 +358,10 @@ function initLights() {
 // Création et positionnement des objets
 function initObjects() {
   const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshStandardMaterial({ color: 0x0077ff });
-
+  
   for (let i = 0; i < 6; i++) {
+    const material = new THREE.MeshStandardMaterial({ color: 0x0077ff, transparent: true, opacity: 1 });
+
     const cube = new THREE.Mesh(geometry, material);
     cube.position.set(i * 1.1, 0, 0); // Position en file
     objects.push(cube);
@@ -313,9 +382,6 @@ function onWindowResize() {
 // Animation continue (lévitation et rendu)
 function animate() {
   requestAnimationFrame(animate);
-
-  // Mise à jour d'OrbitControls
-  // controls.update();
 
   const elapsed = clock.getElapsedTime();
   if (hoverObject) {

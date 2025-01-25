@@ -8,6 +8,12 @@
   --font-title: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 0.25rem; } /* Width */
+::-webkit-scrollbar-track { background: color-mix(in srgb, var(--text-color), transparent 80%); } /* Track */
+::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--text-color), transparent 25%); } /* Handle */
+::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--text-color), transparent 0%); } /* Handle on hover */
+
 *{
   margin: 0;
   padding: 0;
@@ -64,7 +70,8 @@ header{
   position: fixed;
   inset: 0;
   padding: 1.5rem;
-  display: flex;
+  /* display: flex; */
+  display: none;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -277,10 +284,13 @@ header{
 #project-infos{
   position: absolute;
   top: 50%;
-  left: 5vw;
+  left: 14vw;
   translate: 0 -50%;
   width: clamp(10px, 40%, 500px);  
   max-height: calc(100vh - 4rem);
+  @media (width < 1080px) {
+    left: 5vw;
+  }
   #project-infos__title{
     font-family: var(--font-title);
     font-size: clamp(1.125rem, -0.875rem + 8.333vw, 3.5rem);
@@ -475,7 +485,7 @@ body.night-mode #navigation-slider{
   top: 50%;
   right: 5vw;
   translate: 0 -50%;
-  width: clamp(10px, 55%, 700px);  
+  width: clamp(10px, 45%, 700px);  
   height: clamp(4rem, 100vh, calc(100vh - 10rem));
 }
 
@@ -609,11 +619,40 @@ body.night-mode #navigation-slider{
     margin-block: 2rem;
   }
   #about-view__text{
+    height: calc(80vh - 300px);
+    overflow-y: auto;
     margin-bottom: 3rem;
+    & > :not(:last-child){
+      margin-bottom: 1rem;
+    }
+  }
+  #about-view__tools{
+    p{
+      font-weight: bold;
+      margin-bottom: 0.5rem;      
+    }
+    .tools{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5rem;
+      img.tool__icon{
+        display: block;
+        width: 2rem;
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: contain;
+        object-position: center;        
+      }
+    }
   }
   #about-view__contact,
   #about-view__back{
     margin-top: 0.5rem;
+    p{
+      font-style: italic;
+      margin-bottom: 1rem;      
+    }
     a{
       position: relative;
       display: inline-block;
