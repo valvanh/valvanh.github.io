@@ -6,6 +6,7 @@ let currentPage = "home";
 let scene, camera, renderer, clock;
 let objects = [];
 let hoverObject = null;
+let objectAbout = null;
 let index = 0;
 let ambientLight;
 let loading = false;
@@ -70,7 +71,7 @@ function handleModalBuild() {
   let modalBuild = document.getElementById('modal-build');
   let buttonCloseModal = document.getElementById('close-modal');
 
-  // modalBuild.showModal();
+  modalBuild.showModal();
 
   buttonCloseModal.addEventListener('click', () => {
     if(modalBuild.open){
@@ -260,6 +261,15 @@ function handleLinks() {
               });
             }
           });
+
+          gsap.to(objectAbout.material, {
+            opacity: 0, // Rendre invisible
+            duration: 0.5,
+            ease: 'power2.out',
+            onComplete: () => {
+              objectAbout.visible = false; // Désactiver la visibilité après l'animation
+            },
+          });
           break;
           
         case "/about":
@@ -273,6 +283,7 @@ function handleLinks() {
             duration: 0.5,
             ease: 'power2.out',
           });
+
           objects.forEach((cube) => {
             gsap.to(cube.material, {
               opacity: 0, // Rendre invisible
@@ -282,6 +293,13 @@ function handleLinks() {
                 cube.visible = false; // Désactiver la visibilité après l'animation
               },
             });
+          });
+
+          objectAbout.visible = true;
+          gsap.to(objectAbout.material, {
+            opacity: 1, // Rendre visible
+            duration: 0.5,
+            ease: 'power2.out',
           });
           break;
             
@@ -361,12 +379,19 @@ function initObjects() {
   
   for (let i = 0; i < 6; i++) {
     const material = new THREE.MeshStandardMaterial({ color: 0x0077ff, transparent: true, opacity: 1 });
-
+    
     const cube = new THREE.Mesh(geometry, material);
     cube.position.set(i * 1.1, 0, 0); // Position en file
     objects.push(cube);
     scene.add(cube);
   }
+
+  const geometryAbout = new THREE.BoxGeometry();
+  const materialAbout = new THREE.MeshStandardMaterial({ color: 0xff0000, transparent: true, opacity: 0 });
+  objectAbout = new THREE.Mesh(geometryAbout, materialAbout);
+  objectAbout.position.set(0, 0, 0); // Position en file
+  objectAbout.visible = false;
+  scene.add(objectAbout);
 
   hoverObject = objects[0]; // L'objet en focus au début
   animateBounce(hoverObject);
@@ -387,6 +412,7 @@ function animate() {
   if (hoverObject) {
     hoverObject.position.y += Math.sin(elapsed) * 0.001; // Effet de lévitation
   }
+  objectAbout.position.y += Math.sin(elapsed) * 0.001; // Effet de lévitation
 
   renderer.render(scene, camera);
 }
@@ -417,11 +443,50 @@ function onMouseMove(event) {
     y: mouseX * 0.5,
     duration: 0.5,
   });
+
+  gsap.to(objectAbout.rotation, {
+    x: mouseY * 0.5,
+    y: mouseX * 0.5,
+    duration: 0.5,
+  });
 }
 
 // Navigation dans la file d'attente
 async function updateSlider(direction) {
   const previousObject = hoverObject;
+
+  // Slide objects
+  for (let i = 0; i < objects.length; i++) {
+    if (direction === 1) {
+      if (hoverObject === objects[i]) {
+        gsap.to(objects[i].position, {
+          x: (objects.length - 1) * 1.1,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      } else {
+        gsap.to(objects[i].position, {
+          x: objects[i].position.x - 1.1,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      }
+    } else if (direction === -1) {
+      if (i === (index - 1 + objects.length) % objects.length) {
+        gsap.to(objects[i].position, {
+          x: 0, // Déplace le dernier cube en premier
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      } else {
+        gsap.to(objects[i].position, {
+          x: objects[i].position.x + 1.1, // Décale les autres cubes vers la droite
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+      }
+    }
+  }
 
   // Mise à jour de l'index et de l'objet actuel
   index = (index + direction + objects.length) % objects.length;
@@ -453,4 +518,5 @@ function animateBounce(object) {
 
   // object.position.y = -0.5; // Part d'une position basse
   gsap.to(object.position, { y: 0.5, duration: 0.5, ease: 'power2.out' }); // Remonte avec un effet de bond
+  gsap.to(objectAbout.position, { y: 0.5, duration: 0.5, ease: 'power2.out' }); // Remonte avec un effet de bond
 }

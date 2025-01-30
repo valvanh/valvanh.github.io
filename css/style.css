@@ -70,8 +70,8 @@ header{
   position: fixed;
   inset: 0;
   padding: 1.5rem;
-  /* display: flex; */
-  display: none;
+  display: flex;
+  /* display: none; */
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -483,10 +483,14 @@ body.night-mode #navigation-slider{
 #about-view{
   position: absolute;
   top: 50%;
-  right: 5vw;
+  right: 14vw;
   translate: 0 -50%;
-  width: clamp(10px, 45%, 700px);  
+  width: clamp(10px, 40%, 500px);  
   height: clamp(4rem, 100vh, calc(100vh - 10rem));
+  align-content: center;
+  @media (width < 1080px) {
+    right: 5vw;
+  }
 }
 
 #project-view{
