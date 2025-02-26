@@ -226,6 +226,9 @@ header{
     #menu__list{
       width: clamp(10px, calc(100vw - 5rem), 200px);
       height: 38px;
+      @media (width < 768px) {
+        width: clamp(70px, 20vw, 150px);
+      }
     }
   }
   #menu__button{
@@ -290,6 +293,15 @@ header{
   max-height: calc(100vh - 4rem);
   @media (width < 1080px) {
     left: 5vw;
+  }
+  @media (width < 768px) {
+    top: 60%;
+    left: clamp(1.5rem, 5vw, 5rem);
+    right: clamp(1.5rem, 5vw, 5rem);
+    bottom: clamp(1.5rem, 3vh, 3rem);
+    translate: 0 0;
+    width: auto;
+    height: auto;
   }
   #project-infos__title{
     font-family: var(--font-title);
@@ -491,6 +503,15 @@ body.night-mode #navigation-slider{
   @media (width < 1080px) {
     right: 5vw;
   }
+  @media (width < 768px) {
+    top: 40%;
+    left: clamp(1.5rem, 5vw, 5rem);
+    right: clamp(1.5rem, 5vw, 5rem);
+    bottom: clamp(1.5rem, 3vh, 3rem);
+    translate: 0 0;
+    width: auto;
+    height: auto;
+  }
 }
 
 #project-view{
@@ -556,6 +577,10 @@ body.night-mode #navigation-slider{
     height: calc(80vh - 300px);
     overflow-y: auto;
     margin-bottom: 3rem;
+    @media (width < 768px) {
+      height: auto;
+      max-height: calc(55vh - clamp(203px, 30vh, 223px));
+    }
     #project-view__text{
       margin-bottom: 1.5rem;
       & > :not(:last-child){

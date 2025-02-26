@@ -10,6 +10,7 @@ let objectAbout = null;
 let index = 0;
 let ambientLight;
 let loading = false;
+let isMobile;
 
 document.addEventListener('readystatechange', function () {
   console.log("Fiered '" + document.readyState + "' after " + performance.now() + " ms");
@@ -17,6 +18,8 @@ document.addEventListener('readystatechange', function () {
 
 document.addEventListener('DOMContentLoaded', async function () {
   console.log("Fiered DOMContentLoaded after " + performance.now() + " ms");
+
+  isMobile = window.matchMedia("(max-width: 768px)").matches ? true : false;
 
   loadingScreen();
   handleModalBuild();
@@ -124,12 +127,37 @@ function viewProject(event){
   currentPage = "project";
   document.body.classList.add('project-view');
   
-  gsap.to(camera.position, {
-    x: -2.5,
-    z: 3.75,
-    duration: 0.5,
-    ease: 'power2.out',
-  });
+  if (isMobile) {
+    gsap.to(camera.position, {
+      x: -4.25,
+      y: 0.9,
+      z: 4,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+    gsap.to(camera.rotation, {
+      x: -20 * (Math.PI / 180),
+      y: -45 * (Math.PI / 180),
+      z: -14 * (Math.PI / 180),
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+  } else {
+    gsap.to(camera.position, {
+      x: -2.5,
+      y: 0.5,
+      z: 3.75,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+    gsap.to(camera.rotation, {
+      x: 0 * (Math.PI / 180),
+      y: -45 * (Math.PI / 180),
+      z: 0 * (Math.PI / 180),
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+  }
 
   objects.forEach((cube) => {
     if (cube !== hoverObject) {
@@ -233,12 +261,37 @@ function handleLinks() {
           currentPage = "home";
           document.body.classList.remove('project-view', 'about-view');
           
-          gsap.to(camera.position, {
-            x: -3.75,
-            z: 2.5,
-            duration: 0.5,
-            ease: 'power2.out',
-          });
+          if (isMobile) {
+            gsap.to(camera.position, {
+              x: -3.75,
+              y: 1.1,
+              z: 3.5,
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+            gsap.to(camera.rotation, {
+              x: -20 * (Math.PI / 180),
+              y: -45 * (Math.PI / 180),
+              z: -14 * (Math.PI / 180),
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+          } else {
+            gsap.to(camera.position, {
+              x: -3.75,
+              y: 0.5,
+              z: 2.5,
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+            gsap.to(camera.rotation, {
+              x: 0 * (Math.PI / 180),
+              y: -45 * (Math.PI / 180),
+              z: 0 * (Math.PI / 180),
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+          }
 
           objects.forEach((cube) => {
             cube.visible = true;
@@ -277,12 +330,37 @@ function handleLinks() {
           document.body.classList.add('about-view');
           document.body.classList.remove('project-view');
           
-          gsap.to(camera.position, {
-            x: -2.5,
-            z: 3.75,
-            duration: 0.5,
-            ease: 'power2.out',
-          });
+          if (isMobile) {
+            gsap.to(camera.position, {
+              x: -4.25,
+              y: 0.9,
+              z: 4,
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+            gsap.to(camera.rotation, {
+              x: -20 * (Math.PI / 180),
+              y: -45 * (Math.PI / 180),
+              z: -14 * (Math.PI / 180),
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+          } else {
+            gsap.to(camera.position, {
+              x: -2.5,
+              y: 0.5,
+              z: 3.75,
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+            gsap.to(camera.rotation, {
+              x: 0 * (Math.PI / 180),
+              y: -45 * (Math.PI / 180),
+              z: 0 * (Math.PI / 180),
+              duration: 0.5,
+              ease: 'power2.out',
+            });
+          }
 
           objects.forEach((cube) => {
             gsap.to(cube.material, {
@@ -346,10 +424,19 @@ function initScene() {
 
   // Configuration de la caméra
   camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.set(-3.75, 0.5, 2.5);
-  // camera.rotation.x -= 0 * (Math.PI / 180);
-  camera.rotation.y -= 45 * (Math.PI / 180);
-  // camera.rotation.z -= 0 * (Math.PI / 180);
+  if (isMobile) {
+    camera.position.set(-3.75, 1.1, 3.5);
+    camera.rotation.x -= 20 * (Math.PI / 180);
+    camera.rotation.y -= 45 * (Math.PI / 180);
+    camera.rotation.z -= 14 * (Math.PI / 180);
+  } else {
+    camera.position.set(-3.75, 0.5, 2.5);
+    // camera.rotation.x -= 0 * (Math.PI / 180);
+    camera.rotation.y -= 45 * (Math.PI / 180);
+    // camera.rotation.z -= 0 * (Math.PI / 180);
+  }
+  console.log(camera.rotation);
+  
 
   // Rendu
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -399,8 +486,76 @@ function initObjects() {
 
 // Mise à jour lors du redimensionnement de la fenêtre
 function onWindowResize() {
+  isMobile = window.matchMedia("(max-width: 768px)").matches ? true : false;
+
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
+
+  if (isMobile) {
+    if (currentPage === "home") {
+      gsap.to(camera.position, {
+        x: -3.75,
+        y: 1.1,
+        z: 3.5,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+      gsap.to(camera.rotation, {
+        x: -20 * (Math.PI / 180),
+        y: -45 * (Math.PI / 180),
+        z: -14 * (Math.PI / 180),
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    } else if (['about', 'project'].includes(currentPage)) {
+      gsap.to(camera.position, {
+        x: -4.25,
+        y: 0.9,
+        z: 4,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+      gsap.to(camera.rotation, {
+        x: -20 * (Math.PI / 180),
+        y: -45 * (Math.PI / 180),
+        z: -14 * (Math.PI / 180),
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    }
+  } else {
+    if (currentPage === "home"){
+      gsap.to(camera.position, {
+        x: -3.75,
+        y: 0.5,
+        z: 2.5,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+      gsap.to(camera.rotation, {
+        x: 0 * (Math.PI / 180),
+        y: -45 * (Math.PI / 180),
+        z: 0 * (Math.PI / 180),
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    }else if(['about', 'project'].includes(currentPage)){
+      gsap.to(camera.position, {
+        x: -2.5,
+        y: 0.5,
+        z: 3.75,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+      gsap.to(camera.rotation, {
+        x: 0 * (Math.PI / 180),
+        y: -45 * (Math.PI / 180),
+        z: 0 * (Math.PI / 180),
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    }
+  }
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
