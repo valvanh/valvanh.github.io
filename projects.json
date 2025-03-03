@@ -4,6 +4,7 @@
       "name": "Wonderin'",
       "subtitle": "Where writers write, there will always be readers to read them. Travel to worlds imagined by millions of people and share your stories with the world too.",
       "logo": "/assets/images/projects/logo/wonderin-logo.webp",
+      "viewModel": "/assets/3dmodels/wonderin-model.glb",
       "galleryImage": [
         "/assets/images/projects/gallery/wonderin-1.webp",
         "/assets/images/projects/gallery/wonderin-2.webp",
@@ -20,6 +21,7 @@
       "name": "All In One",
       "subtitle": "Are you a content creator? Having trouble managing your networks? Stop everything! All In One is the solution. Manage all your networks from one place without any hassle.",
       "logo": "/assets/images/projects/logo/all-in-one-logo.webp",
+      "viewModel": "/assets/3dmodels/all-in-one-model.glb",
       "galleryImage": [
         "/assets/images/projects/gallery/all-in-one-1.webp",
         "/assets/images/projects/gallery/all-in-one-2.webp",
@@ -36,6 +38,7 @@
       "name": "Agrio Agriculture",
       "subtitle": "The future of ecology and agriculture. Join the Agrio Agriculture adventure and contribute to a healthier and more eco-responsible diet.",
       "logo": "/assets/images/projects/logo/agrio-logo.webp",
+      "viewModel": "/assets/3dmodels/agrio-model.glb",
       "galleryImage": [
         "/assets/images/projects/gallery/agrio-1.webp",
         "/assets/images/projects/gallery/agrio-2.webp",
@@ -52,6 +55,7 @@
       "name": "Wolface",
       "subtitle": "Share your best moments with friends, family and more on Wolface.",
       "logo": "/assets/images/projects/logo/wolface-logo.webp",
+      "viewModel": "/assets/3dmodels/wolface-model.glb",
       "galleryImage": [
         "/assets/images/projects/gallery/wolface-1.webp",
         "/assets/images/projects/gallery/wolface-2.webp",
@@ -68,6 +72,7 @@
       "name": "3D",
       "subtitle": "My first 3D website using ThreeJS",
       "logo": "/assets/images/projects/logo/3d-world-logo.webp",
+      "viewModel": "/assets/3dmodels/3d-model.glb",
       "galleryImage": [
         "/assets/images/projects/gallery/3d-world-1.webp",
         "/assets/images/projects/gallery/3d-world-2.webp",
@@ -84,6 +89,7 @@
       "name": "Geogames",
       "subtitle": "Think you're a video game expert? Let's check it out right now. Try to find out which game you landed in and where.",
       "logo": "/assets/images/projects/logo/geogames-logo.webp",
+      "viewModel": "/assets/3dmodels/geogames-model.glb",
       "galleryImage": [
         "/assets/images/projects/gallery/geogames-1.webp",
         "/assets/images/projects/gallery/geogames-2.webp",

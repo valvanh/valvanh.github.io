@@ -4,11 +4,13 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 let currentPage = "home";
 
 let scene, camera, renderer, clock;
+let ambientLight;
+let backgroundShader, backgroundSphere, particles, particlesMaterial;
 let objects = [];
 let hoverObject = null;
 let objectAbout = null;
 let index = 0;
-let ambientLight;
+let gapBetweenModels = 2;
 let loading = false;
 let isMobile;
 
@@ -36,8 +38,11 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   initScene();
   initLights();
+  initBackground();
   initObjects();
-  animate();
+  setTimeout(() => {
+    animate();
+  }, 300);
 
   let initialProject = await getProject(1);  
   loadProjectInfos(initialProject);
@@ -159,24 +164,32 @@ function viewProject(event){
     });
   }
 
-  objects.forEach((cube) => {
-    if (cube !== hoverObject) {
-      gsap.to(cube.position, {
+  objects.forEach((obj) => {
+    if (obj !== hoverObject) {
+      gsap.to(obj.position, {
         y: -1, // Descendre
         duration: 0.5,
         ease: 'power2.out',
       });
-      gsap.to(cube.material, {
-        opacity: 0, // Rendre invisible
-        duration: 0.5,
-        ease: 'power2.out',
-        onComplete: () => {
-          cube.visible = false; // Désactiver la visibilité après l'animation
-        },
+      obj.traverse((child) => {
+        if (child.isMesh && child.material){
+          gsap.to(child.material, {
+            opacity: 0, // Rendre invisible
+            duration: 0.5,
+            ease: 'power2.out',
+            onComplete: () => {
+              obj.visible = false; // Désactiver la visibilité après l'animation
+            },
+          });
+        }
       });
     } else {
-      cube.material.opacity = 1;
-      cube.visible = true;
+      obj.visible = true;
+      obj.traverse((child) => {
+        if (child.isMesh && child.material){
+          child.material.opacity = 1;
+        }
+      });
     }
   });
 }
@@ -198,29 +211,38 @@ async function getProject(idProject) {
 }
 
 function switchLightNight() {
+  let newColor1, newColor2
   const theme = getCookie('theme') === 'night' ? 'light' : 'night';
   setCookie('theme', theme, 7);
 
-  // Détermine les nouvelles couleurs et intensités
-  const newBackground = theme === 'night' ? '#17212b' : '#efecf6';
-  const newIntensity = theme === 'night' ? 0.3 : 0.8;
+  const nightMode = theme === 'night';
 
-  // Transition douce avec GSAP
-  gsap.to(ambientLight, { intensity: newIntensity, duration: 0.5, ease: 'power2.out' });
-  gsap.to(scene.background, {
-    r: new THREE.Color(newBackground).r,
-    g: new THREE.Color(newBackground).g,
-    b: new THREE.Color(newBackground).b,
-    duration: 0.5,
-    ease: 'power2.out',
-    onUpdate: () => {
-      // Met à jour la couleur de l'arrière-plan en temps réel
-      renderer.render(scene, camera);
-    }
+  if (nightMode) {
+    newColor1 = new THREE.Color('#06080b');
+    newColor2 = new THREE.Color('#17202a');
+  } else {
+    newColor1 = new THREE.Color('#afadb5');
+    newColor2 = new THREE.Color('#efedf7');
+  }
+  const newParticleColor = nightMode ? 0xaaaaaa : 0xffffff;
+
+  gsap.to(ambientLight, { intensity: nightMode ? 0.3 : 0.8, duration: 0.5, ease: 'power2.out' });
+  gsap.to(backgroundShader.uniforms.uColor1.value, { 
+      r: newColor1.r, g: newColor1.g, b: newColor1.b, duration: 0.5, ease: 'power2.out' 
+  });
+  gsap.to(backgroundShader.uniforms.uColor2.value, { 
+      r: newColor2.r, g: newColor2.g, b: newColor2.b, duration: 0.5, ease: 'power2.out' 
+  });
+  gsap.to(particlesMaterial.color, { 
+      r: new THREE.Color(newParticleColor).r,
+      g: new THREE.Color(newParticleColor).g,
+      b: new THREE.Color(newParticleColor).b,
+      duration: 0.5,
+      ease: 'power2.out'
   });
 
   // Transition visuelle pour le corps (CSS)
-  if (theme === 'night') {
+  if (nightMode) {
     document.body.classList.remove('light-mode');
     document.body.classList.add('night-mode');
   } else {
@@ -261,6 +283,7 @@ function handleLinks() {
           currentPage = "home";
           document.body.classList.remove('project-view', 'about-view');
           
+          // Gestion de la caméra
           if (isMobile) {
             gsap.to(camera.position, {
               x: -3.75,
@@ -293,24 +316,32 @@ function handleLinks() {
             });
           }
 
-          objects.forEach((cube) => {
-            cube.visible = true;
-            if (cube !== hoverObject) {
-              gsap.to(cube.position, {
+          objects.forEach((obj) => {
+            obj.visible = true;
+            if (obj !== hoverObject) {
+              gsap.to(obj.position, {
                 y: 0, // Monter
                 duration: 0.5,
                 ease: 'power2.out',
               });
-              gsap.to(cube.material, {
-                opacity: 1, // Rendre visible
-                duration: 0.5,
-                ease: 'power2.out',
+              obj.traverse((child) => {
+                if (child.isMesh && child.material){
+                  gsap.to(child.material, {
+                    opacity: 1, // Rendre visible
+                    duration: 0.5,
+                    ease: 'power2.out'
+                  });
+                }
               });
             } else {
-              gsap.to(cube.material, {
-                opacity: 1, // Rendre visible
-                duration: 0.5,
-                ease: 'power2.out',
+              obj.traverse((child) => {
+                if (child.isMesh && child.material){
+                  gsap.to(child.material, {
+                    opacity: 1, // Rendre visible
+                    duration: 0.5,
+                    ease: 'power2.out'
+                  });
+                }
               });
             }
           });
@@ -362,14 +393,18 @@ function handleLinks() {
             });
           }
 
-          objects.forEach((cube) => {
-            gsap.to(cube.material, {
-              opacity: 0, // Rendre invisible
-              duration: 0.5,
-              ease: 'power2.out',
-              onComplete: () => {
-                cube.visible = false; // Désactiver la visibilité après l'animation
-              },
+          objects.forEach((obj) => {
+            obj.traverse((child) => {
+              if (child.isMesh && child.material){
+                gsap.to(child.material, {
+                  opacity: 0, // Rendre invisible
+                  duration: 0.5,
+                  ease: 'power2.out',
+                  onComplete: () => {
+                    obj.visible = false; // Désactiver la visibilité après l'animation
+                  },
+                });
+              }
             });
           });
 
@@ -431,20 +466,13 @@ function initScene() {
     camera.rotation.z -= 14 * (Math.PI / 180);
   } else {
     camera.position.set(-3.75, 0.5, 2.5);
-    // camera.rotation.x -= 0 * (Math.PI / 180);
     camera.rotation.y -= 45 * (Math.PI / 180);
-    // camera.rotation.z -= 0 * (Math.PI / 180);
   }
-  console.log(camera.rotation);
-  
 
   // Rendu
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
-
-  // Couleur initiale de l'arrière-plan
-  scene.background = new THREE.Color(getCookie('theme') === 'night' ? '#17212b' : '#efecf6');
 
   clock = new THREE.Clock();
   window.addEventListener('resize', onWindowResize);
@@ -455,22 +483,121 @@ function initLights() {
   ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
   scene.add(ambientLight);
 
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  directionalLight.position.set(10, 10, 10);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(0, 1, 0);
   scene.add(directionalLight);
 }
 
+// Gestion du background (dégradé + particules)
+function initBackground() {
+  let gradientColor1, gradientColor2;
+  if (getCookie('theme') === 'night') {
+    gradientColor1 = new THREE.Color('#06080b');
+    gradientColor2 = new THREE.Color('#17202a');
+  } else {
+    gradientColor1 = new THREE.Color('#afadb5');
+    gradientColor2 = new THREE.Color('#efedf7');
+  }
+
+  // --- Dégradé animé avec Shader ---
+  backgroundShader = new THREE.ShaderMaterial({
+    side: THREE.BackSide,
+    uniforms: {
+        uTime: { value: 0 },
+        uColor1: { value: gradientColor1 },
+        uColor2: { value: gradientColor2 } 
+    },
+    vertexShader: `
+      varying vec3 vPosition;
+      void main() {
+          vPosition = normalize(position);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float uTime;
+      uniform vec3 uColor1;
+      uniform vec3 uColor2;
+      varying vec3 vPosition;
+      void main() {
+          float mixValue = (vPosition.y + 1.0) / 2.0;
+          vec3 color = mix(uColor1, uColor2, mixValue);
+          gl_FragColor = vec4(color, 1.0);
+      }
+    `
+  });
+
+  backgroundSphere = new THREE.Mesh(new THREE.SphereGeometry(15, 32, 32), backgroundShader);
+  scene.add(backgroundSphere);
+
+  // --- Particules animées ---
+  const particleCount = 100;
+  const particlesGeometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(particleCount * 3);
+  const speeds = new Float32Array(particleCount);
+
+  for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 6;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 6;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 3;
+
+      speeds[i] = Math.random() * 0.002 + 0.001;
+  }
+
+  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  particlesMaterial = new THREE.PointsMaterial({ color: getCookie('theme') === 'night' ? 0x22222240 : 0xffffff40, size: 0.02 });
+  particles = new THREE.Points(particlesGeometry, particlesMaterial);
+  scene.add(particles);
+}
+
 // Création et positionnement des objets
-function initObjects() {
-  const geometry = new THREE.BoxGeometry();
-  
-  for (let i = 0; i < 6; i++) {
-    const material = new THREE.MeshStandardMaterial({ color: 0x0077ff, transparent: true, opacity: 1 });
+async function initObjects() {
+  let allProjects;
+  try {
+    const response = await fetch('/projects.json');
+
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const results = await response.json();
+    allProjects = results.projects;
     
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.set(i * 1.1, 0, 0); // Position en file
-    objects.push(cube);
-    scene.add(cube);
+  } catch (error) {
+    console.error(error.message);
+    return;
+  }
+
+  const loader = new GLTFLoader();
+  
+  const promises = allProjects.map((project, index) => {
+    return new Promise((resolve, reject) => {
+      loader.load(project.viewModel, (gltf) => {
+        const model = gltf.scene;
+
+        model.traverse((child) => {
+          if(child.isMesh) {
+            if (child.material) {
+              child.material.transparent = true;
+              child.material.opacity = 1;
+            }
+          }
+        });
+
+        model.position.set(index * gapBetweenModels, 0, 0);
+        resolve(model);
+      }, undefined, reject);
+    });
+  });
+
+  try {
+    const loadedModels = await Promise.all(promises);
+
+    loadedModels.forEach(model => {
+      objects.push(model);
+      scene.add(model);
+    });
+  } catch (error) {
+    console.error('Erreur de chargement:', error);
   }
 
   const geometryAbout = new THREE.BoxGeometry();
@@ -480,8 +607,10 @@ function initObjects() {
   objectAbout.visible = false;
   scene.add(objectAbout);
 
-  hoverObject = objects[0]; // L'objet en focus au début
-  animateBounce(hoverObject);
+  setTimeout(() => {
+    hoverObject = objects[0]; // L'objet en focus au début
+    animateBounce(hoverObject);
+  }, 500);
 }
 
 // Mise à jour lors du redimensionnement de la fenêtre
@@ -563,6 +692,18 @@ function onWindowResize() {
 function animate() {
   requestAnimationFrame(animate);
 
+  backgroundShader.uniforms.uTime.value += 0.01; // Animation du shader
+
+  // Animation des particules
+  const positions = particles.geometry.attributes.position.array;
+  for (let i = 0; i < positions.length / 3; i++) {
+      positions[i * 3 + 1] += 0.002; // Monter en Y
+      if (positions[i * 3 + 1] > 3) {
+          positions[i * 3 + 1] = -3; // Revenir en bas
+      }
+  }
+  particles.geometry.attributes.position.needsUpdate = true;
+
   const elapsed = clock.getElapsedTime();
   if (hoverObject) {
     hoverObject.position.y += Math.sin(elapsed) * 0.001; // Effet de lévitation
@@ -615,13 +756,13 @@ async function updateSlider(direction) {
     if (direction === 1) {
       if (hoverObject === objects[i]) {
         gsap.to(objects[i].position, {
-          x: (objects.length - 1) * 1.1,
+          x: (objects.length - 1) * gapBetweenModels,
           duration: 0.5,
           ease: 'power2.out'
         });
       } else {
         gsap.to(objects[i].position, {
-          x: objects[i].position.x - 1.1,
+          x: objects[i].position.x - gapBetweenModels,
           duration: 0.5,
           ease: 'power2.out'
         });
@@ -629,13 +770,13 @@ async function updateSlider(direction) {
     } else if (direction === -1) {
       if (i === (index - 1 + objects.length) % objects.length) {
         gsap.to(objects[i].position, {
-          x: 0, // Déplace le dernier cube en premier
+          x: 0, // Déplace le dernier objet en premier
           duration: 0.5,
           ease: 'power2.out'
         });
       } else {
         gsap.to(objects[i].position, {
-          x: objects[i].position.x + 1.1, // Décale les autres cubes vers la droite
+          x: objects[i].position.x + gapBetweenModels, // Décale les autres objets vers la droite
           duration: 0.5,
           ease: 'power2.out'
         });
