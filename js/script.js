@@ -101,6 +101,7 @@ function loadProjectInfos(project) {
   let textProjectView = document.getElementById('project-view__text');
   let dateProjectView = document.getElementById('project-view__date__value');
   let toolsProjectView = document.getElementById('project-view__tools-wrapper');
+  let galleryProjectView = document.getElementById('project-view__gallery');
 
   let linkProject = document.querySelector('#project-view__link a');
 
@@ -125,6 +126,20 @@ function loadProjectInfos(project) {
     </span>
     `;
   });
+  
+  galleryProjectView.innerHTML = '';
+  project.galleryImage.forEach((image, index) => {
+    galleryProjectView.innerHTML += `
+    <div class="single-image">
+      <img src="${image}" class="single-image__img" alt="Gallery ${project.name} - Image ${index+1}" />
+    </div>
+    `;
+  });
+  galleryProjectView.querySelectorAll('.single-image > img').forEach(img => {
+    img.addEventListener('click', () => {
+      openProjectImage(img);
+    });
+  })
 }
 
 function viewProject(event){
@@ -451,6 +466,16 @@ function getCookie(cname) {
   return "";
 }
 
+function openProjectImage(image) {
+  const lightbox = document.querySelector('#lightbox-project-img');
+  const lightboxImg = document.querySelector('#lightbox-project-img > img');
+  lightboxImg.src = image.src;
+  lightbox.classList.add('show');
+}
+function closeProjectImage() {
+  document.querySelector('#lightbox-project-img').classList.remove('show');
+}
+
 // ---------
 
 // Initialisation de la scène
@@ -720,6 +745,7 @@ function initEventListeners() {
   document.getElementById('switch-light-night').addEventListener('click', switchLightNight);
   document.getElementById('menu__button').addEventListener('click', menuBurger);
   document.getElementById('project-infos__link').addEventListener('click', viewProject);
+  document.getElementById('lightbox-project-img').addEventListener('click', closeProjectImage);
 
   window.addEventListener('mousemove', onMouseMove);
 

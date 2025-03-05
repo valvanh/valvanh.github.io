@@ -588,6 +588,33 @@ body.night-mode #navigation-slider{
       }
     }
     #project-view__gallery{
+      display: grid;
+      gap: 0.25rem;
+      grid-template-columns: repeat(12, 1fr);
+      margin-bottom: 1.5rem;
+      & > .single-image{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1440/1024;
+        overflow: hidden;
+        grid-column-start: span 4;
+        filter: brightness(1);
+        transition: 0.5s ease-in-out;
+        &:nth-child(5n-1),
+        &:nth-child(5n){
+          grid-column-start: span 6;
+        }
+        & > img{
+          cursor: pointer;
+          display: block;
+          width: 100%;
+        }
+      }
+      &:has(.single-image:hover){
+        .single-image:not(:hover){
+          filter: brightness(0.5);
+        }
+      }
     }
   }
   #project-view__link,
@@ -752,5 +779,32 @@ body{
   &.project-view{
   }
   &.about-view{
+  }
+}
+
+
+#lightbox-project-img {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 999999;
+  & > img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 0.25rem solid white;
+  }
+  &.show {
+    visibility: visible;
+    opacity: 1;
   }
 }

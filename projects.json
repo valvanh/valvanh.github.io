@@ -10,7 +10,8 @@
         "/assets/images/projects/gallery/wonderin-2.webp",
         "/assets/images/projects/gallery/wonderin-3.webp",
         "/assets/images/projects/gallery/wonderin-4.webp",
-        "/assets/images/projects/gallery/wonderin-5.webp"
+        "/assets/images/projects/gallery/wonderin-5.webp",
+        "/assets/images/projects/gallery/wonderin-6.webp"
       ],
       "date": "2022",
       "description": "<p>Wonderin' is a platform dedicated to writing and reading enthusiasts, offering an interactive space where everyone can share their stories and discover those of other enthusiasts. Inspired by the concept of Wattpad, this project aims to create a true literary community where everyone's imagination comes to life through original stories.</p><p>The application offers various features that promote user engagement: publishing chapters, following favorite authors, comments and reactions on works, as well as a personalized recommendation system based on reading preferences. Authors can structure their writings, illustrate their stories and interact directly with their audience to enrich their creative process.</p><p>Developed as part of a school project, Wonderin' is the result of a collaboration between a graphic designer and front-end developer and myself, in charge of back-end development with Laravel. My work focused on user management, structuring databases, setting up APIs, as well as optimizing the site's performance and security. Through this experience, I was able to deepen my skills in web development while contributing to a platform designed to encourage creativity and sharing within a dynamic community.</p>",
