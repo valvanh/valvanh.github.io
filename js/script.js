@@ -545,7 +545,7 @@ function initBackground() {
   }
 
   particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  particlesMaterial = new THREE.PointsMaterial({ color: getCookie('theme') === 'night' ? 0x22222240 : 0xffffff40, size: 0.02 });
+  particlesMaterial = new THREE.PointsMaterial({ color: getCookie('theme') === 'night' ? 0xaaaaaa : 0xffffff, size: 0.02 });
   particles = new THREE.Points(particlesGeometry, particlesMaterial);
   scene.add(particles);
 }
