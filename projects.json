@@ -36,8 +36,8 @@
       "tools": ["AdonisJS"]
     },
     {
-      "name": "Agrio Agriculture",
-      "subtitle": "The future of ecology and agriculture. Join the Agrio Agriculture adventure and contribute to a healthier and more eco-responsible diet.",
+      "name": "Agrios Agriculture",
+      "subtitle": "The future of ecology and agriculture. Join the Agrios Agriculture adventure and contribute to a healthier and more eco-responsible diet.",
       "logo": "/assets/images/projects/logo/agrio-logo.webp",
       "viewModel": "/assets/3dmodels/agrio-model.glb",
       "galleryImage": [
@@ -45,10 +45,12 @@
         "/assets/images/projects/gallery/agrio-2.webp",
         "/assets/images/projects/gallery/agrio-3.webp",
         "/assets/images/projects/gallery/agrio-4.webp",
-        "/assets/images/projects/gallery/agrio-5.webp"
+        "/assets/images/projects/gallery/agrio-5.webp",
+        "/assets/images/projects/gallery/agrio-6.webp",
+        "/assets/images/projects/gallery/agrio-7.webp"
       ],
       "date": "2024",
-      "description": "<p>Agrio Agriculture is a modern and refined website designed to promote healthier and more eco-responsible agriculture. This project aims to highlight the commitments and services of the company Agrio Agriculture, specialized in sustainable and innovative agricultural practices. In line with its mission, the site offers a fluid and intuitive interface allowing visitors to discover ecological initiatives, products and services offered, as well as informative articles on modern agriculture.</p><p>The main objective of the project was to design a complete site from a model recovered on Figma, while exploring a new framework, AstroJS. The site includes several essential sections, including an immersive home page, a presentation of the company, a dynamic blog powered by a CMS (WordPress type), and an interactive contact form facilitating exchanges with visitors and potential customers.</p><p>By developing Agrio Agriculture, I was able to deepen my skills in model integration, web development with AstroJS, content management via a CMS, and performance optimization for smooth and fast navigation. This project also allowed me to work on crucial aspects such as SEO, accessibility and multi-device compatibility, thus ensuring an optimal user experience on all media.</p>",
+      "description": "<p>Agrios Agriculture is a modern and refined website designed to promote healthier and more eco-responsible agriculture. This project aims to highlight the commitments and services of the company Agrios Agriculture, specialized in sustainable and innovative agricultural practices. In line with its mission, the site offers a fluid and intuitive interface allowing visitors to discover ecological initiatives, products and services offered, as well as informative articles on modern agriculture.</p><p>The main objective of the project was to design a complete site from a model recovered on Figma, while exploring a new framework, AstroJS. The site includes several essential sections, including an immersive home page, a presentation of the company, a dynamic blog powered by a CMS (WordPress type), and an interactive contact form facilitating exchanges with visitors and potential customers.</p><p>By developing Agrios Agriculture, I was able to deepen my skills in model integration, web development with AstroJS, content management via a CMS, and performance optimization for smooth and fast navigation. This project also allowed me to work on crucial aspects such as SEO, accessibility and multi-device compatibility, thus ensuring an optimal user experience on all media.</p>",
       "link": "https://agrio-agriculture.net/",
       "tools": ["AstroJS"]
     },
@@ -96,7 +98,8 @@
         "/assets/images/projects/gallery/geogames-2.webp",
         "/assets/images/projects/gallery/geogames-3.webp",
         "/assets/images/projects/gallery/geogames-4.webp",
-        "/assets/images/projects/gallery/geogames-5.webp"
+        "/assets/images/projects/gallery/geogames-5.webp",
+        "/assets/images/projects/gallery/geogames-6.webp"
       ],
       "date": "2024",
       "description": "<p>Geogames is an interactive web game inspired by the Redbull GeoGamer concept, combining exploration, visual memory and video game culture. Halfway between GeoGuessr and a video game quiz, it invites players to dive into environments from different games and take on a double challenge: identify the title of the game and precisely locate their position on the virtual map of this world.</p><p>The idea was born out of frustration: not being able to play the official version of the concept, I decided to take on the technical and creative challenge of developing it myself. Designed entirely in pure JavaScript (without a framework) and ThreeJS, Geogames offers an immersive 3D experience, allowing players to observe their environment from all angles before making their guesses. The game also tests their knowledge and sense of direction through varied levels, ranging from great video game classics to lesser-known worlds.</p><p>To make the experience even more competitive and engaging, Geogames integrates a scoring system that allows players to record their performance and try to improve their result with each new game. The more precise the answer, the higher the score, thus encouraging players to improve their observation and knowledge of video games. This progression system provides a real challenge and encourages replaying to achieve the best possible score.</p><p>This project allowed me to deepen my skills in native JavaScript, in manipulating 3D scenes with ThreeJS, and in optimizing performance to ensure maximum fluidity. It also represents a reflection on user interaction, game design, and the implementation of an answer validation and scoring system, making the experience as fun as it is stimulating. Geogames is thus the culmination of a passion for video games and web development, combining creativity and technicality to offer an original and competitive experience to players.</p>",
