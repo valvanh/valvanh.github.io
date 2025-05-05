@@ -1,135 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentin Vanhaecke - Front-end Developer</title>
-  <link rel="stylesheet preload" href="/css/style.css" as="style">
-  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
-</head>
-<body>
-  <main>
-    <div id="loading-screen">
-      <div id="loading-screen__spin">
-        <span id="loading-screen__progress">Loading assets...</span>
-      </div>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentin Vanhaecke - Front-end Developer</title>
+    <link rel="stylesheet preload" href="/css/style.css" as="style" />
+    <link
+      rel="shortcut icon"
+      href="/assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    Test
 
-    <dialog id="modal-build">
-      <h3>Portfolio still under construction</h3>
-      <p>The site you are about to see is my personal portfolio. However, it is not yet completely finalized and some features may be missing. You can still visit it but be aware that it may change in the coming days.</p>
-      <button id="close-modal">See website</button>
-    </dialog>
-
-    <header>
-      <a href="/" id="brand">Valentin V</a>
-      
-      <div id="menu">
-        <button id="menu__button">
-          <div class="menu__bar"></div>
-          <div class="menu__bar"></div>
-          <div class="menu__bar"></div>
-        </button>
-        <ul id="menu__list">
-          <li><a href="/">Projects</a></li>
-          <li><a href="/about">About</a></li>
-        </ul>
-      </div>
-    </header>
-
-    <aside id="project-infos">
-      <div id="project-infos__title"></div>
-      <div id="project-infos__desc"></div>
-      <a href="#project-1" id="project-infos__link">View project</a>
-    </aside>
-
-    <article id="project-view">
-      <div id="project-view__head">
-        <h2 id="project-view__title"></h2>
-        <span id="project-view__subtitle"></span>
-        <div id="project-view__infos">
-          <div id="project-view__date">
-            <strong>Date</strong>
-            <span id="project-view__date__value"></span>
-          </div>
-          <div id="project-view__tools">
-            <strong>Tools</strong>
-            <div id="project-view__tools-wrapper">
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div id="project-view__content">
-        <div id="project-view__text">
-        </div>
-        <div id="project-view__gallery">
-        </div>
-        <div id="project-view__link">
-          <a href="/">See project</a>
-        </div>
-        <div id="project-view__back">
-          <a href="/">Back to projects</a>
-        </div>
-      </div>
-    </article>
-
-    <article id="about-view">
-      <div id="about-view__head">
-        <h2>Let's talk about me</h2>
-      </div>
-      <hr />
-      <div id="about-view__text">
-        <p>Full-stack web developer specializing in front-end, I am passionate about creating complex projects with simple and efficient tools. After starting in web integration, then exploring full-stack development, I naturally moved towards the front-end, a field where I fully flourish by transforming ideas into interactive and intuitive experiences.</p>
-        <p>Versatile and curious, I have had the opportunity to experiment with a wide range of technologies and frameworks such as ReactJS, VueJS, AstroJS, Laravel, Symfony, and many others. These explorations have allowed me to develop a complete vision of modern web ecosystems while improving my skills in creating user interfaces that are both efficient and aesthetic.</p>
-        <p>Today, I am looking for ambitious and innovative projects, whether technically complex or visually captivating. I am particularly attracted to creative coding, which allows me to push the boundaries of web development to design immersive and visually stunning experiences.</p>
-        <p>My goal: to combine technical expertise and creativity to transform ideas into concrete solutions that leave a lasting impression.</p>
-
-        <div id="about-view__tools">
-          <p>My toolbox</p>
-          <div class="tools">
-            <img src="/assets/images/tools/reactjs.svg" class="tool__icon" alt="ReactJS Icon" />
-            <img src="/assets/images/tools/vuejs.svg" class="tool__icon" alt="VueJS Icon" />
-            <img src="/assets/images/tools/astrojs.svg" class="tool__icon" alt="AstroJS Icon" />
-            <img src="/assets/images/tools/laravel.svg" class="tool__icon" alt="Laravel Icon" />
-            <!-- <img src="/assets/images/tools/symfony.svg" class="tool__icon" alt="Symfony Icon" /> -->
-            <img src="/assets/images/tools/adonisjs.svg" class="tool__icon" alt="AdonisJS Icon" />
-            <img src="/assets/images/tools/wordpress.svg" class="tool__icon" alt="WordPress Icon" />
-            <img src="/assets/images/tools/drupal.svg" class="tool__icon" alt="Drupal Icon" />
-            <img src="/assets/images/tools/threejs.svg" class="tool__icon" alt="ThreeJS Icon" />
-          </div>
-        </div>
-        <div id="about-view__contact">
-          <p>Want to work together ?</p>
-          <a href="mailto:valentinvanh@gmail.com">Let's do it !</a>
-        </div>
-        <div id="about-view__back">
-          <a href="/">Back to projects</a>
-        </div>
-      </div>
-    </article>
-
-    <div id="navigation-slider">
-      <button id="navigation-slider__prev">Prev</button>
-      <button id="navigation-slider__next">Next</button>
-      
-      <button id="switch-light-night">Light/Night Mode</button>
-    </div>
-
-    <div id="lightbox-project-img">
-      <img src="" alt="">
-    </div>
-  </main>
-
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
-      }
-    }
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
-  <script type="module" src="/js/script.js"></script>
-</body>
+    <!-- <script type="module" src="/js/script.js"></script> -->
+  </body>
 </html>
