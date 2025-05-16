@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "name": "All In One",
+      "subtitle": "Are you a content creator? Having trouble managing your networks? Stop everything! All In One is the solution. Manage all your networks from one place without any hassle.",
+      "logo": "/assets/images/projects/logo/all-in-one-logo.webp",
+      "banner": "/assets/images/projects/gallery/all-in-one-1.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/all-in-one-2.webp",
+        "/assets/images/projects/gallery/all-in-one-3.webp",
+        "/assets/images/projects/gallery/all-in-one-4.webp",
+        "/assets/images/projects/gallery/all-in-one-5.webp"
+      ],
+      "date": "2024",
+      "description": "All In One is an innovative solution designed for content creators who want to centralize and automate the management of their social networks. In a world where online presence is essential, this application allows them to publish, plan and analyze their content on multiple platforms from a single space, thus optimizing their time and productivity.\rWith All In One, users can connect their YouTube, Twitter, Instagram, TikTok and many other accounts to manage their publications smoothly and efficiently. The application integrates an automated rules system, allowing the content distribution to be adapted according to each platform. For example, when a new video is uploaded to YouTube, a promotional post must be created on Twitter and Instagram. In addition, the tool offers an advanced dashboard with detailed statistics on publication performance and audience engagement, as well as a planning system to organize posts in advance.\rEntirely designed, developed and crafted by me with AdonisJs, All In One is the result of a comprehensive work combining back-end and front-end development, social media API management, performance optimization and intuitive user experience. This project allowed me to perfect my full-stack development skills while meeting the concrete needs of content creators, offering them a powerful and flexible tool to effectively manage their online presence.",
+      "tools": ["AdonisJS"],
+      "links": [
+        "lien maquette",
+        "lien github",
+        "lien site"
+      ]
+    },
+    {
+      "name": "3D",
+      "subtitle": "My first 3D website using ThreeJS",
+      "logo": "/assets/images/projects/logo/3d-world-logo.webp",
+      "banner": "/assets/images/projects/gallery/3d-world-1.webp",
+      "galleryImage": [
+        "/assets/images/projects/gallery/3d-world-2.webp",
+        "/assets/images/projects/gallery/3d-world-3.webp",
+        "/assets/images/projects/gallery/3d-world-4.webp",
+        "/assets/images/projects/gallery/3d-world-5.webp"
+      ],
+      "date": "2024",
+      "description": "3D is an experimental project that aims to explore interactive web development by combining ReactJS and ThreeJS to create an immersive 3D user experience. Designed as a one-page site, this project is above all an exploration of creative coding, mixing fluid animations, dynamic transitions and the integration of 3D elements to offer a visually captivating navigation.\rStarting from a mockup recovered from Figma, the objective was to bring a static design to life by integrating three-dimensional elements and ensuring a fluid interaction with the user. Thanks to ThreeJS, I was able to model and animate 3D objects, while using ReactJS to structure and organize the site in a modular way. Every detail was worked on to offer an aesthetic and intuitive experience, with fluid animations during transitions between sections, optimized performance management and natural interactivity with visual elements.\rThis project was a great opportunity to hone my skills in advanced front-end development, WebGL rendering optimization, and modern and dynamic interface design. By pushing the boundaries of interactive design, 3D represents a fusion of technology and creativity, demonstrating the potential of immersive and interactive web environments.",
+      "tools": ["ReactJS", "ThreeJS"],
+      "links": [
+        "lien maquette",
+        "lien github",
+        "lien site"
+      ]
+    }
+  ]
+}
