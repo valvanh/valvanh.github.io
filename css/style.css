@@ -773,7 +773,6 @@ aside.navigation-side {
     .view__details {
       display: none;
       flex: 1 1 auto;
-      display: flex;
       flex-direction: column;
       align-items: stretch;
       width: 100%;
@@ -797,6 +796,9 @@ aside.navigation-side {
               display: inline-block;
             }
             button {
+              display: inline-block;
+              margin-left: 1rem;
+              font-size: 1.5rem;
             }
             &.active {
               color: #fff;
@@ -1030,6 +1032,72 @@ aside.navigation-side {
 }
 
 /* MOBILE RESPONSIVE */
+@media (width < 1280px) {
+  #tab__about{
+    .content{
+      #view__bio,
+      #view__interests,
+      #view__schools,
+      #view__experiences{
+        overflow-y: auto;
+        &.active{
+          display: block;
+        }
+        .editor-left,
+        .editor-right{
+          width: 100%;
+          height: fit-content;
+        }
+        .editor-right{
+          border-top: 1px solid var(--border-color);
+        }
+      }
+    }
+  }
+  #tab__projects{
+    .content{
+      .view__details{
+        .project-content{
+          display: block;
+          overflow-y: auto;
+          .project-content__details,
+          .project-content__gallery{
+            width: 100%;
+            height: fit-content;
+          }
+          .project-content__gallery{
+            border-top: 1px solid var(--border-color);
+          }
+        }
+      }
+    }
+  }
+}
+@media (width < 768px) {
+  #tab__about{
+    aside.navigation-side{
+      flex: 0 1 auto;
+      width: auto;
+      .navigation-side__content{
+        display: none;
+      }
+    }
+  }
+  #tab__projects{
+    display: grid;
+    aside.navigation-side{
+      width: auto;
+      border-bottom: 1px solid var(--border-color);
+      .navigation-side__content{
+        height: auto;
+      }
+    }
+    .content{
+      height: auto;
+      overflow-y: auto;
+    }
+  }
+}
 @media (width < 640px) {
   header {
     height: auto;
@@ -1047,12 +1115,6 @@ aside.navigation-side {
     }
   }
 
-  footer {
-  }
-
-  #tab__intro {
-    /*  */
-  }
 }
 
 /* ANIMATIONS */

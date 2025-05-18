@@ -229,13 +229,21 @@ function initEventListeners() {
       if (target.parentElement.classList.contains('active') && document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`).length > 0) {
         flushTabProject = true;
         if (document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`)[0].classList.contains('active')) {
-          document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`)[1].click();
+          if (document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`).length == 1) {
+            document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`)[0].remove();
+            document.querySelector("#tab__projects .content .view__listing").classList.add("active");
+            document.querySelector("#tab__projects .content .view__details").classList.remove("active");
+          } else {
+            document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`)[1].click();
+          }
         } else {
           document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`)[0].click();
         }
       }
 
-      document.querySelector(`#tab__projects .content .view__details .tab-links ul li:has(span[data-id-project="${idProject}"])`).remove();
+      if (document.querySelector(`#tab__projects .content .view__details .tab-links ul li:has(span[data-id-project="${idProject}"])`)) {
+        document.querySelector(`#tab__projects .content .view__details .tab-links ul li:has(span[data-id-project="${idProject}"])`).remove();
+      }
 
       if (document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`).length == 0) {
         document.querySelector("#tab__projects .content .view__details").classList.remove("active");
@@ -258,6 +266,8 @@ function initEventListeners() {
         });
         document.querySelector(`#tab__projects .content .view__details .tab-links ul li:has(span[data-id-project="${idProject}"])`).classList.add("active");
         document.querySelector(`#tab__projects .navigation-side nav ul li ul li span:has(button[data-id-project="${idProject}"])`).classList.add("active");
+        
+        loadProjectInfos(idProject);
       }
       flushTabProject = true;
     }
