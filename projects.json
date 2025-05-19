@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Wonderin'",
-      "subtitle": "Where writers write, there will always be readers to read them. Travel to worlds imagined by millions of people and share your stories with the world too.",
+      "subtitle": "Là où les écrivains écrivent, il y aura toujours des lecteurs pour les lire. Voyagez dans des mondes imaginés par des millions de personnes et partagez vos histoires avec le monde entier.",
       "logo": "/assets/images/projects/logo/wonderin-logo.webp",
       "banner": "/assets/images/projects/gallery/wonderin-1.webp",
       "galleryImage": [
@@ -13,17 +13,17 @@
         "/assets/images/projects/gallery/wonderin-6.webp"
       ],
       "date": "2022",
-      "description": "Wonderin' is a platform dedicated to writing and reading enthusiasts, offering an interactive space where everyone can share their stories and discover those of other enthusiasts. Inspired by the concept of Wattpad, this project aims to create a true literary community where everyone's imagination comes to life through original stories.\nThe application offers various features that promote user engagement: publishing chapters, following favorite authors, comments and reactions on works, as well as a personalized recommendation system based on reading preferences. Authors can structure their writings, illustrate their stories and interact directly with their audience to enrich their creative process.\rDeveloped as part of a school project, Wonderin' is the result of a collaboration between a graphic designer and front-end developer and myself, in charge of back-end development with Laravel. My work focused on user management, structuring databases, setting up APIs, as well as optimizing the site's performance and security. Through this experience, I was able to deepen my skills in web development while contributing to a platform designed to encourage creativity and sharing within a dynamic community.",
+      "description": "Wonderin' est une plateforme dédiée aux passionnés d'écriture et de lecture, offrant un espace interactif où chacun peut partager ses histoires et découvrir celles d'autres passionnés. Inspiré du concept de Wattpad, ce projet vise à créer une véritable communauté littéraire où l'imagination de chacun prend vie à travers des histoires originales.\nL'application propose diverses fonctionnalités favorisant l'engagement des utilisateurs : publication de chapitres, suivi des auteurs favoris, commentaires et réactions sur les œuvres, ainsi qu'un système de recommandations personnalisées en fonction des préférences de lecture. Les auteurs peuvent structurer leurs écrits, illustrer leurs histoires et interagir directement avec leur public pour enrichir leur processus créatif.\rDéveloppée dans le cadre d'un projet scolaire, Wonderin' est le fruit d'une collaboration entre un graphiste et développeur front-end et moi-même, en charge du développement back-end avec Laravel. Mon travail s'est concentré sur la gestion des utilisateurs, la structuration des bases de données, la mise en place d'API, ainsi que l'optimisation des performances et de la sécurité du site. Grâce à cette expérience, j'ai pu approfondir mes compétences en développement web tout en contribuant à une plateforme conçue pour encourager la créativité et le partage au sein d'une communauté dynamique.",
       "tools": ["Laravel"],
       "links": [
         "https://www.figma.com/design/FIv10RKrYGiRvuT6akaKjk/Maquette-Wonderin-?node-id=105-2&t=MmtVNx63TIjUVzBj-1",
         "https://github.com/valvanh/Wonderin",
-        "https://wonderin.com/"
+        ""
       ]
     },
     {
-      "name": "Agrios Agriculture",
-      "subtitle": "The future of ecology and agriculture. Join the Agrios Agriculture adventure and contribute to a healthier and more eco-responsible diet.",
+      "name": "Agrios Agriculture (en cours)",
+      "subtitle": "L'avenir de l'écologie et de l'agriculture. Rejoignez l'aventure Agrios Agriculture et contribuez à une alimentation plus saine et plus éco-responsable.",
       "logo": "/assets/images/projects/logo/agrio-logo.webp",
       "banner": "/assets/images/projects/gallery/agrio-1.webp",
       "galleryImage": [
@@ -35,37 +35,17 @@
         "/assets/images/projects/gallery/agrio-7.webp"
       ],
       "date": "2024",
-      "description": "Agrios Agriculture is a modern and refined website designed to promote healthier and more eco-responsible agriculture. This project aims to highlight the commitments and services of the company Agrios Agriculture, specialized in sustainable and innovative agricultural practices.\nIn line with its mission, the site offers a fluid and intuitive interface allowing visitors to discover ecological initiatives, products and services offered, as well as informative articles on modern agriculture.\rThe main objective of the project was to design a complete site from a model recovered on Figma, while exploring a new framework, AstroJS. The site includes several essential sections, including an immersive home page, a presentation of the company, a dynamic blog powered by a CMS (WordPress type), and an interactive contact form facilitating exchanges with visitors and potential customers.\rBy developing Agrios Agriculture, I was able to deepen my skills in model integration, web development with AstroJS, content management via a CMS, and performance optimization for smooth and fast navigation. This project also allowed me to work on crucial aspects such as SEO, accessibility and multi-device compatibility, thus ensuring an optimal user experience on all media.",
+      "description": "Agrios Agriculture est un site web moderne et épuré, conçu pour promouvoir une agriculture plus saine et plus éco-responsable. Ce projet vise à mettre en avant les engagements et les services de l'entreprise Agrios Agriculture, spécialisée dans les pratiques agricoles durables et innovantes.\nConformément à sa mission, le site propose une interface fluide et intuitive permettant aux visiteurs de découvrir les initiatives écologiques, les produits et services proposés, ainsi que des articles informatifs sur l'agriculture moderne.\rL'objectif principal du projet était de concevoir un site complet à partir d'un modèle récupéré sur Figma, tout en explorant un nouveau framework, AstroJS. Le site comprend plusieurs sections essentielles, dont une page d'accueil immersive, une présentation de l'entreprise, un blog dynamique propulsé par un CMS (type WordPress) et un formulaire de contact interactif facilitant les échanges avec les visiteurs et les clients potentiels.\rEn développant Agrios Agriculture, j'ai pu approfondir mes compétences en intégration de modèles, en développement web avec AstroJS, en gestion de contenu via un CMS et en optimisation des performances pour une navigation fluide et rapide. Ce projet m'a également permis de travailler sur des aspects cruciaux tels que le référencement, l'accessibilité et la compatibilité multi-appareils, garantissant ainsi une expérience utilisateur optimale sur tous les supports.",
       "tools": ["AstroJS"],
       "links": [
         "https://www.figma.com/design/5ez3VC1kj5uf6SPraf20gh/75--Agriculture-Landing-website-templates--Community-?node-id=0-1&t=MmtVNx63TIjUVzBj-1",
         "https://github.com/valvanh/agrios-astro",
-        "https://agrio-agriculture.net/"
-      ]
-    },
-    {
-      "name": "Wolface",
-      "subtitle": "Share your best moments with friends, family and more on Wolface.",
-      "logo": "/assets/images/projects/logo/wolface-logo.webp",
-      "banner": "/assets/images/projects/gallery/wolface-1.webp",
-      "galleryImage": [
-        "/assets/images/projects/gallery/wolface-2.webp",
-        "/assets/images/projects/gallery/wolface-3.webp",
-        "/assets/images/projects/gallery/wolface-4.webp",
-        "/assets/images/projects/gallery/wolface-5.webp"
-      ],
-      "date": "2022",
-      "description": "Wolface is a student project that aims to recreate the experience of a complete social network, similar to Facebook, with a focus on user interaction. The main objective was to explore and master the fundamental concepts of web development by designing a dynamic platform where users can share their best moments, interact with their community, and build relationships with their loved ones.\rDeveloped entirely in PHP and based on a MySQL database, Wolface integrates all the essential features of a modern social network. Users can register and log in securely, publish content, like, comment and share posts, and add friends to build their personal network. A personalized news feed displays the latest posts from friends, allowing for a fluid and immersive interaction.\rThis project was carried out in collaboration with a graphic designer, who was responsible for the design and ergonomics of the site, while I took care of the entire development, both front-end and back-end. This work allowed me to strengthen my skills in database management, user session manipulation, dynamic interface creation and data security. Thanks to this experience, I gained a better understanding of how social networks work and the technical challenges related to their design, while implementing a robust and efficient architecture.",
-      "tools": ["PHP", "MySQL"],
-      "links": [
-        "",
-        "https://github.com/valvanh/WOLFACE",
-        "https://wolface.com/"
+        ""
       ]
     },
     {
       "name": "Geogames",
-      "subtitle": "Think you're a video game expert? Let's check it out right now. Try to find out which game you landed in and where.",
+      "subtitle": "Vous pensez être un expert en jeux vidéo ? Voyons cela de plus près. Essayez de découvrir dans quel jeu vous avez atterri et où.",
       "logo": "/assets/images/projects/logo/geogames-logo.webp",
       "banner": "/assets/images/projects/gallery/geogames-1.webp",
       "galleryImage": [
@@ -76,7 +56,7 @@
         "/assets/images/projects/gallery/geogames-6.webp"
       ],
       "date": "2024",
-      "description": "Geogames is an interactive web game inspired by the Redbull GeoGamer concept, combining exploration, visual memory and video game culture. Halfway between GeoGuessr and a video game quiz, it invites players to dive into environments from different games and take on a double challenge: identify the title of the game and precisely locate their position on the virtual map of this world.\nThe idea was born out of frustration: not being able to play the official version of the concept, I decided to take on the technical and creative challenge of developing it myself. Designed entirely in pure JavaScript (without a framework) and ThreeJS, Geogames offers an immersive 3D experience, allowing players to observe their environment from all angles before making their guesses. The game also tests their knowledge and sense of direction through varied levels, ranging from great video game classics to lesser-known worlds.\rTo make the experience even more competitive and engaging, Geogames integrates a scoring system that allows players to record their performance and try to improve their result with each new game. The more precise the answer, the higher the score, thus encouraging players to improve their observation and knowledge of video games. This progression system provides a real challenge and encourages replaying to achieve the best possible score.\rThis project allowed me to deepen my skills in native JavaScript, in manipulating 3D scenes with ThreeJS, and in optimizing performance to ensure maximum fluidity. It also represents a reflection on user interaction, game design, and the implementation of an answer validation and scoring system, making the experience as fun as it is stimulating. Geogames is thus the culmination of a passion for video games and web development, combining creativity and technicality to offer an original and competitive experience to players.",
+      "description": "Geogames est un jeu web interactif inspiré du concept Redbull GeoGamer, alliant exploration, mémoire visuelle et culture vidéoludique. À mi-chemin entre GeoGuessr et un quiz vidéoludique, il invite les joueurs à plonger dans des environnements de différents jeux et à relever un double défi : identifier le titre du jeu et se situer précisément sur la carte virtuelle de ce monde.\nL'idée est née d'une frustration : ne pouvant pas jouer à la version officielle du concept, j'ai décidé de relever le défi technique et créatif de le développer moi-même. Entièrement conçu en pur JavaScript (sans framework) et ThreeJS, Geogames offre une expérience 3D immersive, permettant aux joueurs d'observer leur environnement sous tous les angles avant de faire leurs suppositions. Le jeu teste également leurs connaissances et leur sens de l'orientation à travers des niveaux variés, allant des grands classiques du jeu vidéo à des mondes moins connus.\rPour rendre l'expérience encore plus compétitive et engageante, Geogames intègre un système de score qui permet aux joueurs d'enregistrer leurs performances et d'essayer d'améliorer leur résultat à chaque nouvelle partie. Plus la réponse est précise, plus le score est élevé, encourageant ainsi les joueurs à améliorer leur observation et leur connaissance des jeux vidéo. Ce système de progression offre un véritable défi et incite à rejouer pour atteindre le meilleur score possible.\rCe projet m'a permis d'approfondir mes compétences en JavaScript natif, en manipulation de scènes 3D avec ThreeJS et en optimisation des performances pour une fluidité maximale. Il représente également une réflexion sur l'interaction utilisateur, la conception du jeu et la mise en place d'un système de validation et de notation des réponses, rendant l'expérience aussi ludique que stimulante. Geogames est ainsi l'aboutissement d'une passion pour les jeux vidéo et le développement web, alliant créativité et technicité pour offrir une expérience originale et compétitive aux joueurs.",
       "tools": ["JavaScript", "ThreeJS"],
       "links": [
         "https://www.figma.com/design/u2GsjUGVWSw5tuzFq7EWYU/%F0%9F%94%8D%F0%9F%95%B9%EF%B8%8F-GeoGames?node-id=0-1&t=MmtVNx63TIjUVzBj-1",

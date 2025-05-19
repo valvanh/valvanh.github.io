@@ -192,12 +192,30 @@ footer {
   inset: 0;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   text-align: center;
   align-content: center;
   background-color: #00121e;
   opacity: 1;
   z-index: 99999;
   transition: 0.5s ease-out;
+  span.loading-screen__loader{
+    display: block;
+    width: 5rem;
+    aspect-ratio: 1;
+    border: 0.25rem solid var(--font-color);
+    border-top-color: #00121e;
+    border-radius: 50%;
+    animation: spinLoader 3s linear 0s infinite;
+  }
+  span.loading-screen__message{
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 }
 
 /* Main */
@@ -697,7 +715,7 @@ aside.navigation-side {
     .view__listing {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      grid-auto-rows: 500px;
+      grid-auto-rows: min-content;
       gap: 3rem 1.5rem;
       width: 100%;
       height: 100%;
@@ -884,6 +902,53 @@ aside.navigation-side {
               }
               span.single-tool__label{
 
+              }
+            }
+            .links-projet{
+              display: flex;
+              justify-content: stretch;
+              align-items: stretch;
+              flex-wrap: wrap;
+              gap: 0.5rem;
+              margin-top: 2rem;
+              a.link{
+                flex: 1 1 auto;
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                color: var(--font-color);
+                border: 1px solid var(--font-color);
+                border-radius: 0.25rem;
+                background-color: transparent;
+                text-align: center;
+                transition: 0.5s ease-out;
+                &:is(:hover, :focus-visible){
+                  background-color: var(--font-color);
+                  color: var(--background-color);
+                }
+                &.link-design{
+                  color: #8b38f4;
+                  border-color: #8b38f4;
+                  &:is(:hover, :focus-visible){
+                    background-color: #8b38f4;
+                    color: var(--background-color);
+                  }
+                }
+                &.link-github{
+                  color: #e9eff4;
+                  border-color: #e9eff4;
+                  &:is(:hover, :focus-visible){
+                    background-color: #e9eff4;
+                    color: var(--background-color);
+                  }
+                }
+                &.link-website{
+                  color: var(--link-color);
+                  border-color: var(--link-color);
+                  &:is(:hover, :focus-visible){
+                    background-color: var(--link-color);
+                    color: var(--background-color);
+                  }
+                }
               }
             }
           }
@@ -1150,5 +1215,13 @@ aside.navigation-side {
   }
   80% {
     translate: -20% -5%;
+  }
+}
+@keyframes spinLoader {
+  from{
+    rotate: 0deg;
+  }
+  to{
+    rotate: 360deg;
   }
 }
