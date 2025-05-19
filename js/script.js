@@ -8,7 +8,7 @@ document.addEventListener("readystatechange", function () {
   console.log("Fiered '" + document.readyState + "' after " + performance.now() + " ms");
 });
 
-document.addEventListener( "DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async function () {
     console.log("Fiered DOMContentLoaded after " + performance.now() + " ms");
 
     isMobile = window.matchMedia("(max-width: 768px)").matches ? true : false;
@@ -24,13 +24,16 @@ document.addEventListener( "DOMContentLoaded", async function () {
       
     } catch (error) {
       console.error(error.message);
+      setTimeout(() => {
+        location.reload(true);
+      }, 1000);
     }
 
     loadingScreen();
     
 }, false);
 
-window.addEventListener( "load", function () {
+window.addEventListener("load", function () {
     console.log("Fiered load after " + performance.now() + " ms");
     loading = true;
     initEventListeners();
@@ -231,6 +234,9 @@ function initEventListeners() {
         if (document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`)[0].classList.contains('active')) {
           if (document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`).length == 1) {
             document.querySelectorAll(`#tab__projects .content .view__details .tab-links ul li`)[0].remove();
+            document.querySelectorAll(`#tab__projects .navigation-side nav ul li ul li span`).forEach((tab) => {
+              tab.classList.remove("active");
+            });
             document.querySelector("#tab__projects .content .view__listing").classList.add("active");
             document.querySelector("#tab__projects .content .view__details").classList.remove("active");
           } else {
@@ -362,6 +368,25 @@ function loadProjectInfos(id) {
       <p><span class="single-tool"><img src="/assets/images/tools/${tool.toLowerCase()}.svg" class="single-tool__icon" alt="${tool} Icon"><span class="single-tool__label">${tool}</span></span></p>
     `;
   });
+
+  let linkHTML = `<div class="links-projet">`;
+  if (projet.links[0] != "") {
+    linkHTML += `
+      <a class="link link-design" href="${projet.links[0]}" target="_blank" rel="noopener noreferrer">Voir la maquette</a>
+    `;
+  }
+  if (projet.links[1] != "") {
+    linkHTML += `
+      <a class="link link-github" href="${projet.links[1]}" target="_blank" rel="noopener noreferrer">Voir le Github</a>
+    `;
+  }
+  if (projet.links[2] != "") {
+    linkHTML += `
+      <a class="link link-website" href="${projet.links[2]}" target="_blank" rel="noopener noreferrer">Voir le projet</a>
+    `;
+  }
+  linkHTML += `</div>`;
+  document.querySelector('#tab__projects .view__details .project-content .project-content__details .content-text').innerHTML += linkHTML;
 
   document.querySelector('#tab__projects .view__details .project-content .project-content__gallery .comment').innerHTML = `Projet n°${parseInt(id)+1} // _${projet.name.toLowerCase().replace(' ', '-')}`;
   document.querySelector('#tab__projects .view__details .project-content .project-content__gallery .entete-infos .profil .name-update .update').innerHTML = `Créé en ${projet.date}`;

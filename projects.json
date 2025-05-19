@@ -18,7 +18,7 @@
       "links": [
         "https://www.figma.com/design/FIv10RKrYGiRvuT6akaKjk/Maquette-Wonderin-?node-id=105-2&t=MmtVNx63TIjUVzBj-1",
         "https://github.com/valvanh/Wonderin",
-        "https://wonderin.com/"
+        ""
       ]
     },
     {
@@ -40,27 +40,7 @@
       "links": [
         "https://www.figma.com/design/5ez3VC1kj5uf6SPraf20gh/75--Agriculture-Landing-website-templates--Community-?node-id=0-1&t=MmtVNx63TIjUVzBj-1",
         "https://github.com/valvanh/agrios-astro",
-        "https://agrio-agriculture.net/"
-      ]
-    },
-    {
-      "name": "Wolface",
-      "subtitle": "Share your best moments with friends, family and more on Wolface.",
-      "logo": "/assets/images/projects/logo/wolface-logo.webp",
-      "banner": "/assets/images/projects/gallery/wolface-1.webp",
-      "galleryImage": [
-        "/assets/images/projects/gallery/wolface-2.webp",
-        "/assets/images/projects/gallery/wolface-3.webp",
-        "/assets/images/projects/gallery/wolface-4.webp",
-        "/assets/images/projects/gallery/wolface-5.webp"
-      ],
-      "date": "2022",
-      "description": "Wolface is a student project that aims to recreate the experience of a complete social network, similar to Facebook, with a focus on user interaction. The main objective was to explore and master the fundamental concepts of web development by designing a dynamic platform where users can share their best moments, interact with their community, and build relationships with their loved ones.\rDeveloped entirely in PHP and based on a MySQL database, Wolface integrates all the essential features of a modern social network. Users can register and log in securely, publish content, like, comment and share posts, and add friends to build their personal network. A personalized news feed displays the latest posts from friends, allowing for a fluid and immersive interaction.\rThis project was carried out in collaboration with a graphic designer, who was responsible for the design and ergonomics of the site, while I took care of the entire development, both front-end and back-end. This work allowed me to strengthen my skills in database management, user session manipulation, dynamic interface creation and data security. Thanks to this experience, I gained a better understanding of how social networks work and the technical challenges related to their design, while implementing a robust and efficient architecture.",
-      "tools": ["PHP", "MySQL"],
-      "links": [
-        "",
-        "https://github.com/valvanh/WOLFACE",
-        "https://wolface.com/"
+        ""
       ]
     },
     {
