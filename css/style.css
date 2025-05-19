@@ -715,7 +715,7 @@ aside.navigation-side {
     .view__listing {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      grid-auto-rows: 500px;
+      grid-auto-rows: min-content;
       gap: 3rem 1.5rem;
       width: 100%;
       height: 100%;

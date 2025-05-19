@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Wolface",
-      "subtitle": "Share your best moments with friends, family and more on Wolface.",
+      "subtitle": "Partagez vos meilleurs moments avec vos amis, votre famille et plus encore sur Wolface.",
       "logo": "/assets/images/projects/logo/wolface-logo.webp",
       "banner": "/assets/images/projects/gallery/wolface-1.webp",
       "galleryImage": [
@@ -12,7 +12,7 @@
         "/assets/images/projects/gallery/wolface-5.webp"
       ],
       "date": "2022",
-      "description": "Wolface is a student project that aims to recreate the experience of a complete social network, similar to Facebook, with a focus on user interaction. The main objective was to explore and master the fundamental concepts of web development by designing a dynamic platform where users can share their best moments, interact with their community, and build relationships with their loved ones.\rDeveloped entirely in PHP and based on a MySQL database, Wolface integrates all the essential features of a modern social network. Users can register and log in securely, publish content, like, comment and share posts, and add friends to build their personal network. A personalized news feed displays the latest posts from friends, allowing for a fluid and immersive interaction.\rThis project was carried out in collaboration with a graphic designer, who was responsible for the design and ergonomics of the site, while I took care of the entire development, both front-end and back-end. This work allowed me to strengthen my skills in database management, user session manipulation, dynamic interface creation and data security. Thanks to this experience, I gained a better understanding of how social networks work and the technical challenges related to their design, while implementing a robust and efficient architecture.",
+      "description": "Wolface est un projet étudiant visant à recréer l'expérience d'un réseau social complet, similaire à Facebook, en mettant l'accent sur l'interaction utilisateur. L'objectif principal était d'explorer et de maîtriser les concepts fondamentaux du développement web en concevant une plateforme dynamique où les utilisateurs peuvent partager leurs meilleurs moments, interagir avec leur communauté et tisser des liens avec leurs proches.\rEntièrement développé en PHP et basé sur une base de données MySQL, Wolface intègre toutes les fonctionnalités essentielles d'un réseau social moderne. Les utilisateurs peuvent s'inscrire et se connecter en toute sécurité, publier du contenu, aimer, commenter et partager des publications, et ajouter des amis pour développer leur réseau personnel. Un fil d'actualité personnalisé affiche les dernières publications de leurs amis, permettant une interaction fluide et immersive.\rCe projet a été réalisé en collaboration avec un graphiste, responsable du design et de l'ergonomie du site, tandis que je me suis occupé de l'ensemble du développement, front-end et back-end. Ce travail m'a permis de renforcer mes compétences en gestion de bases de données, manipulation de sessions utilisateur, création d'interfaces dynamiques et sécurité des données. Grâce à cette expérience, j'ai acquis une meilleure compréhension du fonctionnement des réseaux sociaux et des défis techniques liés à leur conception, tout en mettant en œuvre une architecture robuste et performante.",
       "tools": ["PHP", "MySQL"],
       "links": [
         "",
@@ -22,7 +22,7 @@
     },
     {
       "name": "All In One",
-      "subtitle": "Are you a content creator? Having trouble managing your networks? Stop everything! All In One is the solution. Manage all your networks from one place without any hassle.",
+      "subtitle": "Vous êtes créateur de contenu ? Vous avez du mal à gérer vos réseaux ? Arrêtez tout ! All In One est la solution. Gérez tous vos réseaux depuis un seul et même endroit, sans effort.",
       "logo": "/assets/images/projects/logo/all-in-one-logo.webp",
       "banner": "/assets/images/projects/gallery/all-in-one-1.webp",
       "galleryImage": [
@@ -32,7 +32,7 @@
         "/assets/images/projects/gallery/all-in-one-5.webp"
       ],
       "date": "2024",
-      "description": "All In One is an innovative solution designed for content creators who want to centralize and automate the management of their social networks. In a world where online presence is essential, this application allows them to publish, plan and analyze their content on multiple platforms from a single space, thus optimizing their time and productivity.\rWith All In One, users can connect their YouTube, Twitter, Instagram, TikTok and many other accounts to manage their publications smoothly and efficiently. The application integrates an automated rules system, allowing the content distribution to be adapted according to each platform. For example, when a new video is uploaded to YouTube, a promotional post must be created on Twitter and Instagram. In addition, the tool offers an advanced dashboard with detailed statistics on publication performance and audience engagement, as well as a planning system to organize posts in advance.\rEntirely designed, developed and crafted by me with AdonisJs, All In One is the result of a comprehensive work combining back-end and front-end development, social media API management, performance optimization and intuitive user experience. This project allowed me to perfect my full-stack development skills while meeting the concrete needs of content creators, offering them a powerful and flexible tool to effectively manage their online presence.",
+      "description": "All In One est une solution innovante conçue pour les créateurs de contenu souhaitant centraliser et automatiser la gestion de leurs réseaux sociaux. Dans un monde où la présence en ligne est essentielle, cette application leur permet de publier, planifier et analyser leur contenu sur plusieurs plateformes depuis un seul et même espace, optimisant ainsi leur temps et leur productivité.\rAvec All In One, les utilisateurs peuvent connecter leurs comptes YouTube, Twitter, Instagram, TikTok et bien d'autres pour gérer leurs publications de manière fluide et efficace. L'application intègre un système de règles automatisées permettant d'adapter la diffusion du contenu à chaque plateforme. Par exemple, lorsqu'une nouvelle vidéo est mise en ligne sur YouTube, une publication promotionnelle doit être créée sur Twitter et Instagram. De plus, l'outil offre un tableau de bord avancé avec des statistiques détaillées sur les performances des publications et l'engagement de l'audience, ainsi qu'un système de planification pour organiser les publications à l'avance.\rEntièrement conçu, développé et réalisé par mes soins avec AdonisJs, All In One est le fruit d'un travail approfondi combinant développement back-end et front-end, gestion des API pour les réseaux sociaux, optimisation des performances et expérience utilisateur intuitive. Ce projet m'a permis de perfectionner mes compétences en développement full-stack tout en répondant aux besoins concrets des créateurs de contenu, en leur offrant un outil puissant et flexible pour gérer efficacement leur présence en ligne.",
       "tools": ["AdonisJS"],
       "links": [
         "lien maquette",
@@ -42,7 +42,7 @@
     },
     {
       "name": "3D",
-      "subtitle": "My first 3D website using ThreeJS",
+      "subtitle": "Mon premier site Web 3D utilisant ThreeJS",
       "logo": "/assets/images/projects/logo/3d-world-logo.webp",
       "banner": "/assets/images/projects/gallery/3d-world-1.webp",
       "galleryImage": [
@@ -52,7 +52,7 @@
         "/assets/images/projects/gallery/3d-world-5.webp"
       ],
       "date": "2024",
-      "description": "3D is an experimental project that aims to explore interactive web development by combining ReactJS and ThreeJS to create an immersive 3D user experience. Designed as a one-page site, this project is above all an exploration of creative coding, mixing fluid animations, dynamic transitions and the integration of 3D elements to offer a visually captivating navigation.\rStarting from a mockup recovered from Figma, the objective was to bring a static design to life by integrating three-dimensional elements and ensuring a fluid interaction with the user. Thanks to ThreeJS, I was able to model and animate 3D objects, while using ReactJS to structure and organize the site in a modular way. Every detail was worked on to offer an aesthetic and intuitive experience, with fluid animations during transitions between sections, optimized performance management and natural interactivity with visual elements.\rThis project was a great opportunity to hone my skills in advanced front-end development, WebGL rendering optimization, and modern and dynamic interface design. By pushing the boundaries of interactive design, 3D represents a fusion of technology and creativity, demonstrating the potential of immersive and interactive web environments.",
+      "description": "3D est un projet expérimental qui vise à explorer le développement web interactif en combinant ReactJS et ThreeJS pour créer une expérience utilisateur 3D immersive. Conçu comme un site one-page, ce projet est avant tout une exploration du code créatif, mêlant animations fluides, transitions dynamiques et intégration d'éléments 3D pour offrir une navigation visuellement captivante.\rÀ partir d'une maquette récupérée de Figma, l'objectif était de donner vie à un design statique en intégrant des éléments tridimensionnels et en assurant une interaction fluide avec l'utilisateur. Grâce à ThreeJS, j'ai pu modéliser et animer des objets 3D, tout en utilisant ReactJS pour structurer et organiser le site de manière modulaire. Chaque détail a été travaillé pour offrir une expérience esthétique et intuitive, avec des animations fluides lors des transitions entre les sections, une gestion optimisée des performances et une interactivité naturelle avec les éléments visuels.\rCe projet a été une excellente occasion de perfectionner mes compétences en développement front-end avancé, en optimisation du rendu WebGL et en conception d'interfaces modernes et dynamiques. En repoussant les limites de la conception interactive, la 3D représente une fusion de technologie et de créativité, démontrant le potentiel des environnements Web immersifs et interactifs.",
       "tools": ["ReactJS", "ThreeJS"],
       "links": [
         "lien maquette",
