@@ -202,8 +202,22 @@ function onWindowResize() {
 function initEventListeners() {
   handleLinks();
 
-  document.getElementById('button-command-line').addEventListener('click', openCommandLine);
-  document.getElementById('button-view-about').addEventListener('click', () => {});
+  document.getElementById('button-command-line').addEventListener('click', () => {
+    document.getElementById('window-command-line').showModal();
+  });
+  document.getElementById('close-window-command-line').addEventListener('click', () => {
+    document.getElementById('window-command-line').close();
+  });
+  document.getElementById('window-command-line').addEventListener('click', () => {
+    document.getElementById('input-command-line').focus();
+  });
+  document.getElementById('input-command-line').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      handleCommandLineInput(event.target.value)
+      event.target.value = '';
+    }
+  });
+  // document.getElementById('button-view-about').addEventListener('click', () => {});
   document.getElementById('button-play-game').addEventListener('click', () => {
     alert(`Vous pensez à l'avenir vous ;) Restez attentif à la suite`);
   });
@@ -398,6 +412,118 @@ function loadProjectInfos(id) {
   });
 }
 
-function openCommandLine() {
-  console.log("Open command");
+function handleCommandLineInput(command) {
+  const historyCommandLine = document.getElementById('window-command-line__history');
+  command = command.trim();
+
+  historyCommandLine.innerHTML += `
+    <p class="command">$ ${command}</p>
+  `;
+
+  switch (command) {
+    case 'help':
+      historyCommandLine.innerHTML += `
+        <p>Voici la liste des commandes disponibles&nbsp;:</p>
+        <p>&nbsp;&nbsp; help - Liste toutes les commandes</p>
+        <p>&nbsp;&nbsp; clear - Nettoie l'historique de commande</p>
+        <p>&nbsp;&nbsp; developer - Affiche le nom du développeur</p>
+        <p>&nbsp;&nbsp; design - Affiche le nom du designer</p>
+        <p>&nbsp;&nbsp; technologies - Affiche tous les technologies et languages utilisés</p>
+        <p>&nbsp;&nbsp; files - Montre l'architecture du projet</p>
+        <p>&nbsp;&nbsp; exit - Ferme le terminal de commande</p>
+        <p>&nbsp;&nbsp; surprise - Veux-tu vraiment savoir ce qu'il se cache ?</p>
+        <p>&nbsp;&nbsp; go outside - Il est temps d'aller dehors</p>
+      `;
+      break;
+
+    case 'clear':
+      historyCommandLine.innerHTML = ``;
+      break;
+
+    case 'developer':
+      historyCommandLine.innerHTML += `
+        <p>L'intégralité du site a été codé par moi-même, Valentin Vanhaecke 😉</p>
+      `;
+      break;
+
+    case 'design':
+      historyCommandLine.innerHTML += `
+        <p>Le design du site vient d'une maquette récupérée sur Behance, designé par <a href="https://www.behance.net/whoisdave" target="_blank" rel="noopener noreferrer">Davide Simone</a> 🖌️</p>
+      `;
+      break;
+
+    case 'technologies':
+      historyCommandLine.innerHTML += `
+        <p>Tout le site a été réalisé avec&nbsp;:</p>
+        <p>&nbsp;-&nbsp;HTML</p>
+        <p>&nbsp;-&nbsp;CSS</p>
+        <p>&nbsp;-&nbsp;JavaScript</p>
+        <p>&nbsp</p>
+        <p class="success">La clé du succès reste la simplicité 😎</p>
+      `;
+      break;
+
+    case 'files':
+      historyCommandLine.innerHTML += `
+        <p>Voici l'architecture du projet&nbsp;:</p>
+        <p>&nbsp;-&nbsp;assets</p>
+        <p>&nbsp;|&nbsp;-&nbsp;3dmodels</p>
+        <p>&nbsp;|&nbsp;-&nbsp;images</p>
+        <p>&nbsp;-&nbsp;css</p>
+        <p>&nbsp;|&nbsp;-&nbsp;style.css</p>
+        <p>&nbsp;-&nbsp;js</p>
+        <p>&nbsp;|&nbsp;-&nbsp;script.js</p>
+        <p>&nbsp;-&nbsp;index.html</p>
+        <p>&nbsp;-&nbsp;projects.json</p>
+        <p>&nbsp;-&nbsp;next-projects.json</p>
+        <p>&nbsp;-&nbsp;README.md</p>
+      `;
+      break;
+
+    case 'exit':
+      historyCommandLine.innerHTML += `
+        <p>exit</p>
+      `;
+      setTimeout(() => {
+        document.getElementById('window-command-line').close();
+      }, 1000);
+      break;
+
+    case 'surprise':
+      historyCommandLine.innerHTML += `
+        <p>Tu n'aurais pas dû taper cette commande 🤭</p>
+      `;
+      setTimeout(() => {
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+      }, 3000);
+      break;
+
+    case 'go outside':
+      historyCommandLine.innerHTML = `
+        <p class="command">$ ${command}</p>
+        <p>Il est temps d'aller dehors prendre l'air 🌳☁️.</p>
+        <p>Ton navigateur te ménera ailleurs dans 10 secondes 😏</p>
+      `;
+      let count = 10;
+      let timer = setInterval(() => {
+        historyCommandLine.innerHTML += `
+          <p>${count}</p>
+        `;
+        count--;
+        if (count == 0) {
+          clearInterval(timer);
+        }
+      }, 1000);
+      setTimeout(() => {
+        window.location.href = "https://www.youtube.com/embed/EColTNIbOko?autoplay=1";
+      }, 11000);
+      break;
+      
+    default:
+      // console.log('command invalid');
+      historyCommandLine.innerHTML += `
+        <p class="error">Error: Le terme "${command}" n'est pas disponible ou n'est pas reconnu comme une commande. Vérifiez l'autographe ou tapez la commande "help" pour obtenir de l'aide.</p>
+      `;
+      break;
+  }
 }

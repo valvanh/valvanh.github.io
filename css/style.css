@@ -719,6 +719,7 @@ aside.navigation-side {
       gap: 3rem 1.5rem;
       width: 100%;
       height: 100%;
+      overflow-x: hidden;
       overflow-y: auto;
       padding: 2rem 3rem;
       .single-project {
@@ -1096,6 +1097,52 @@ aside.navigation-side {
   }
 }
 
+/* POPUP COMMAND LINE */
+dialog#window-command-line{
+  margin: auto;
+  width: min(80%, 1200px);
+  height: min(80%, 800px);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  &::backdrop{
+    background-color: #000;
+    opacity: 0.25;
+  }
+  #window-command-line__head{
+    text-align: right;
+    background-color: hsl(204, 95%, 6%);
+    padding: 0.5rem 1rem;
+    button#close-window-command-line{
+      font-size: 1.5rem;
+    }
+  }
+  #window-command-line__history{
+    padding: 0.5rem 1rem;
+    padding-bottom: 0;
+    p{
+      &.error{
+        color: #f74848;
+      }
+      &.command{
+        color: #aaaaaa;
+      }
+    }
+  }
+  #window-command-line__input{
+    padding: 0.5rem 1rem;
+    input#input-command-line{
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: var(--font-color);
+      font-family: var(--main-font);
+      font-size: 1rem;
+    }
+  }
+}
+
 /* MOBILE RESPONSIVE */
 @media (width < 1280px) {
   #tab__about{
@@ -1139,6 +1186,19 @@ aside.navigation-side {
   }
 }
 @media (width < 768px) {
+  #tab__intro{
+    overflow-y: auto;
+    .content{
+      #heading{
+        h1#heading__main{
+          font-size: 2rem;
+        }
+        #heading__sub{
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
   #tab__about{
     aside.navigation-side{
       flex: 0 1 auto;
@@ -1179,7 +1239,24 @@ aside.navigation-side {
       order: 2;
     }
   }
-
+  #tab__projects{
+    .content{
+      .view__listing{
+        grid-template-columns: 1fr;
+        .single-project{
+          .single-project__poster {
+            flex: 0 1 auto;
+            height: auto;
+            img {
+              width: 100%;
+              height: auto;
+              aspect-ratio: 2;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /* ANIMATIONS */
