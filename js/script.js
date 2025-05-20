@@ -215,6 +215,11 @@ function initEventListeners() {
     if (event.key === 'Enter') {
       handleCommandLineInput(event.target.value)
       event.target.value = '';
+      document.getElementById('input-command-line').focus();
+      document.getElementById('window-command-line').scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+      });
     }
   });
   // document.getElementById('button-view-about').addEventListener('click', () => {});
@@ -499,7 +504,7 @@ function handleCommandLineInput(command) {
       break;
 
     case 'go outside':
-      historyCommandLine.innerHTML = `
+      historyCommandLine.innerHTML += `
         <p class="command">$ ${command}</p>
         <p>Il est temps d'aller dehors prendre l'air 🌳☁️.</p>
         <p>Ton navigateur te ménera ailleurs dans 10 secondes 😏</p>
@@ -526,4 +531,8 @@ function handleCommandLineInput(command) {
       `;
       break;
   }
+
+  setTimeout(() => {
+    document.getElementById('window-command-line').scrollTop = document.getElementById('window-command-line').scrollHeight;
+  }, 0);
 }

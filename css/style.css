@@ -1111,6 +1111,8 @@ dialog#window-command-line{
     opacity: 0.25;
   }
   #window-command-line__head{
+    position: sticky;
+    inset: 0 0 auto 0;
     text-align: right;
     background-color: hsl(204, 95%, 6%);
     padding: 0.5rem 1rem;
