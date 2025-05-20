@@ -429,15 +429,15 @@ function handleCommandLineInput(command) {
     case 'help':
       historyCommandLine.innerHTML += `
         <p>Voici la liste des commandes disponibles&nbsp;:</p>
-        <p>&nbsp;&nbsp; help - Liste toutes les commandes</p>
-        <p>&nbsp;&nbsp; clear - Nettoie l'historique de commande</p>
-        <p>&nbsp;&nbsp; developer - Affiche le nom du développeur</p>
-        <p>&nbsp;&nbsp; design - Affiche le nom du designer</p>
-        <p>&nbsp;&nbsp; technologies - Affiche tous les technologies et languages utilisés</p>
-        <p>&nbsp;&nbsp; files - Montre l'architecture du projet</p>
-        <p>&nbsp;&nbsp; exit - Ferme le terminal de commande</p>
-        <p>&nbsp;&nbsp; surprise - Veux-tu vraiment savoir ce qu'il se cache ?</p>
-        <p>&nbsp;&nbsp; go outside - Il est temps d'aller dehors</p>
+        <p>&nbsp;&nbsp; help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Liste toutes les commandes</p>
+        <p>&nbsp;&nbsp; clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Nettoie l'historique de commande</p>
+        <p>&nbsp;&nbsp; developer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Affiche le nom du développeur</p>
+        <p>&nbsp;&nbsp; design&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Affiche le nom du designer</p>
+        <p>&nbsp;&nbsp; technologies&nbsp;&nbsp;- Affiche tous les technologies et languages utilisés</p>
+        <p>&nbsp;&nbsp; files&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Montre l'architecture du projet</p>
+        <p>&nbsp;&nbsp; exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Ferme le terminal de commande</p>
+        <p>&nbsp;&nbsp; surprise&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Veux-tu vraiment savoir ce qu'il se cache ?</p>
+        <p>&nbsp;&nbsp; go outside&nbsp;&nbsp;&nbsp;&nbsp;- Il est temps d'aller dehors</p>
       `;
       break;
 
